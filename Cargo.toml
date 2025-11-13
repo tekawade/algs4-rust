@@ -1,0 +1,35 @@
+[workspace]
+members = [
+    "modules/fundamentals",
+    "modules/sorting",
+    "modules/searching",
+    "modules/graphs",
+    "modules/strings",
+    "modules/geometry",
+    "modules/advanced",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["algs4-rust contributors"]
+license = "GPL-3.0"
+repository = "https://github.com/tekawade/algs4-rust"
+keywords = ["algorithms", "data-structures", "education"]
+categories = ["algorithms", "data-structures"]
+
+[workspace.dependencies]
+# Common dependencies shared across modules
+rand = "0.8"
+byteorder = "1.5"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[profile.bench]
+opt-level = 3
+lto = true
+codegen-units = 1

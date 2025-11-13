@@ -1,0 +1,15 @@
+[package]
+name = "algs4-sorting"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+description = "Sorting algorithms from Algorithms 4th Edition"
+
+[dependencies]
+algs4-fundamentals = { path = "../fundamentals" }
+
+[dev-dependencies]

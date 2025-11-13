@@ -1,0 +1,16 @@
+[package]
+name = "algs4-fundamentals"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+description = "Fundamental data structures and utilities from Algorithms 4th Edition"
+
+[dependencies]
+rand = { workspace = true }
+byteorder = { workspace = true }
+
+[dev-dependencies]

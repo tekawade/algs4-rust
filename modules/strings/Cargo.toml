@@ -1,0 +1,16 @@
+[package]
+name = "algs4-strings"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+description = "String processing algorithms from Algorithms 4th Edition"
+
+[dependencies]
+algs4-fundamentals = { path = "../fundamentals" }
+algs4-searching = { path = "../searching" }
+
+[dev-dependencies]

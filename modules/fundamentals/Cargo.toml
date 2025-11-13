@@ -11,6 +11,8 @@ description = "Fundamental data structures and utilities from Algorithms 4th Edi
 
 [dependencies]
 rand = { workspace = true }
+rand_distr = "0.4"
+lazy_static = "1.5"
 byteorder = { workspace = true }
 
 [dev-dependencies]

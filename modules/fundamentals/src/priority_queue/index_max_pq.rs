@@ -73,10 +73,7 @@ impl<T: Ord> IndexMaxPQ<T> {
     /// ```
     pub fn new(max_n: usize) -> Self {
         assert!(max_n > 0, "max_n must be positive");
-        let mut keys = Vec::with_capacity(max_n);
-        for _ in 0..max_n {
-            keys.push(None);
-        }
+        let keys = vec![None; max_n];
         IndexMaxPQ {
             max_n,
             n: 0,
@@ -261,7 +258,7 @@ impl<T: Ord> IndexMaxPQ<T> {
     ///
     /// # Panics
     ///
-    /// Panics if i >= max_n or if no key is associated with index i.
+    /// Panics if i >= max_n. Returns `None` if no key is associated with index i.
     ///
     /// # Examples
     ///

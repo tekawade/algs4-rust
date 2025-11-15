@@ -361,7 +361,7 @@ impl<T: Ord> MinPQ<T> {
     /// pq.insert(4);
     ///
     /// let items: Vec<_> = pq.iter().collect();
-    /// assert_eq!(items, vec![&1, &3, &4]);
+    /// assert_eq!(items, vec![1, 3, 4]);
     /// ```
     pub fn iter(&self) -> Iter<T>
     where

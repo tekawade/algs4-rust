@@ -361,7 +361,7 @@ impl<T: Ord> MaxPQ<T> {
     /// pq.insert(4);
     ///
     /// let items: Vec<_> = pq.iter().collect();
-    /// assert_eq!(items, vec![&4, &3, &1]);
+    /// assert_eq!(items, vec![4, 3, 1]);
     /// ```
     pub fn iter(&self) -> Iter<T>
     where
@@ -394,7 +394,7 @@ impl<T: Ord + fmt::Display> fmt::Display for MaxPQ<T> {
     }
 }
 
-/// An iterator over references to items in descending order.
+/// An iterator over items in descending order.
 #[derive(Debug)]
 pub struct Iter<T> {
     copy: MaxPQ<T>,

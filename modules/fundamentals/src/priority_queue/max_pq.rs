@@ -361,7 +361,7 @@ impl<T: Ord> MaxPQ<T> {
     /// pq.insert(4);
     ///
     /// let items: Vec<_> = pq.iter().collect();
-    /// assert_eq!(items, vec![&4, &3, &1]);
+    /// assert_eq!(items, vec![4, 3, 1]);
     /// ```
     pub fn iter(&self) -> Iter<T>
     where

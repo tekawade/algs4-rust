@@ -394,7 +394,7 @@ impl<T: Ord + fmt::Display> fmt::Display for MinPQ<T> {
     }
 }
 
-/// An iterator over references to items in ascending order.
+/// An iterator over items in ascending order.
 #[derive(Debug)]
 pub struct Iter<T> {
     copy: MinPQ<T>,

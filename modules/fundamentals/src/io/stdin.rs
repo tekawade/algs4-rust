@@ -211,8 +211,8 @@ impl Default for StdIn {
 }
 
 // For simpler usage, provide free functions that use a global instance
-use std::sync::Mutex;
 use std::io::Read;
+use std::sync::Mutex;
 
 lazy_static::lazy_static! {
     static ref GLOBAL_STDIN: Mutex<StdIn> = Mutex::new(StdIn::new());
@@ -260,27 +260,47 @@ pub fn read_line() -> Option<String> {
 
 /// Reads all remaining input as a string.
 pub fn read_all() -> String {
-    GLOBAL_STDIN.lock().ok().map(|mut s| s.read_all()).unwrap_or_default()
+    GLOBAL_STDIN
+        .lock()
+        .ok()
+        .map(|mut s| s.read_all())
+        .unwrap_or_default()
 }
 
 /// Reads all remaining tokens as strings.
 pub fn read_all_strings() -> Vec<String> {
-    GLOBAL_STDIN.lock().ok().map(|mut s| s.read_all_strings()).unwrap_or_default()
+    GLOBAL_STDIN
+        .lock()
+        .ok()
+        .map(|mut s| s.read_all_strings())
+        .unwrap_or_default()
 }
 
 /// Reads all remaining tokens as i32s.
 pub fn read_all_i32() -> Vec<i32> {
-    GLOBAL_STDIN.lock().ok().map(|mut s| s.read_all_i32()).unwrap_or_default()
+    GLOBAL_STDIN
+        .lock()
+        .ok()
+        .map(|mut s| s.read_all_i32())
+        .unwrap_or_default()
 }
 
 /// Reads all remaining tokens as f64s.
 pub fn read_all_f64() -> Vec<f64> {
-    GLOBAL_STDIN.lock().ok().map(|mut s| s.read_all_f64()).unwrap_or_default()
+    GLOBAL_STDIN
+        .lock()
+        .ok()
+        .map(|mut s| s.read_all_f64())
+        .unwrap_or_default()
 }
 
 /// Reads all remaining lines.
 pub fn read_all_lines() -> Vec<String> {
-    GLOBAL_STDIN.lock().ok().map(|mut s| s.read_all_lines()).unwrap_or_default()
+    GLOBAL_STDIN
+        .lock()
+        .ok()
+        .map(|mut s| s.read_all_lines())
+        .unwrap_or_default()
 }
 
 #[cfg(test)]

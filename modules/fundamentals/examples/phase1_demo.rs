@@ -8,7 +8,7 @@
 //!
 //! Run with: cargo run --example phase1_demo
 
-use algs4_fundamentals::io::{stdrandom, stdout};
+use algs4_fundamentals::io::{stdout, stdrandom};
 use algs4_fundamentals::util::{Accumulator, Counter, Stopwatch};
 
 fn main() {

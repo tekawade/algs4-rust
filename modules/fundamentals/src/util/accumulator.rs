@@ -36,9 +36,9 @@ use std::fmt;
 /// ```
 #[derive(Debug, Clone)]
 pub struct Accumulator {
-    n: usize,        // number of data values
-    sum: f64,        // sample variance * (n-1)
-    mu: f64,         // sample mean
+    n: usize, // number of data values
+    sum: f64, // sample variance * (n-1)
+    mu: f64,  // sample mean
 }
 
 impl Accumulator {
@@ -175,8 +175,13 @@ impl Default for Accumulator {
 
 impl fmt::Display for Accumulator {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "n = {}, mean = {:.5}, stddev = {:.5}",
-               self.n, self.mean(), self.stddev())
+        write!(
+            f,
+            "n = {}, mean = {:.5}, stddev = {:.5}",
+            self.n,
+            self.mean(),
+            self.stddev()
+        )
     }
 }
 

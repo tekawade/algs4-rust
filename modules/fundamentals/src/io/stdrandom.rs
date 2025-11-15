@@ -284,7 +284,10 @@ pub fn geometric(p: f64) -> usize {
 /// // Returns a value from Poisson(5.0)
 /// ```
 pub fn poisson(lambda: f64) -> usize {
-    assert!(lambda > 0.0 && lambda.is_finite(), "lambda must be positive and finite");
+    assert!(
+        lambda > 0.0 && lambda.is_finite(),
+        "lambda must be positive and finite"
+    );
     RNG.with(|rng| {
         let poisson = Poisson::new(lambda).unwrap();
         poisson.sample(&mut *rng.borrow_mut()) as usize
@@ -576,7 +579,7 @@ mod tests {
         let last = arr[4];
         shuffle_range(&mut arr, 1, 4);
         assert_eq!(arr[0], first); // First unchanged
-        assert_eq!(arr[4], last);  // Last unchanged
+        assert_eq!(arr[4], last); // Last unchanged
     }
 
     #[test]

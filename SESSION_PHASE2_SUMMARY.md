@@ -270,9 +270,9 @@ Before creating the Pull Request:
 - **Union-Find:** https://algs4.cs.princeton.edu/15uf
 
 ### Project Files
-- Conversion Plan: `/home/user/algs4-rust/CONVERSION_PLAN.md`
-- Progress Tracker: `/home/user/algs4-rust/PROGRESS.md`
-- This Summary: `/home/user/algs4-rust/SESSION_PHASE2_SUMMARY.md`
+- Conversion Plan: CONVERSION_PLAN.md
+- Progress Tracker: PROGRESS.md
+- This Summary: SESSION_PHASE2_SUMMARY.md
 
 ---
 

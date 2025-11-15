@@ -258,7 +258,7 @@ impl<T: Ord> IndexMaxPQ<T> {
     ///
     /// # Panics
     ///
-    /// Panics if i >= max_n or if no key is associated with index i.
+    /// Panics if i >= max_n. Returns `None` if no key is associated with index i.
     ///
     /// # Examples
     ///

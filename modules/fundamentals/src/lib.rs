@@ -43,5 +43,5 @@ pub mod util;
 pub mod collections;
 pub mod union_find;
 
-// Phase 4: Priority queues (to be implemented)
-// pub mod priority_queue;
+// Phase 4: Priority queues
+pub mod priority_queue;

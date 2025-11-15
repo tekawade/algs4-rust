@@ -426,8 +426,8 @@ impl<T: Ord> IndexMinPQ<T> {
         assert!(i < self.max_n, "index {} is out of bounds (max_n = {})", i, self.max_n);
     }
 
-    /// Compares keys at heap positions i and j.
-    fn less(&self, i: usize, j: usize) -> bool {
+    /// Returns `true` if the key at position i is greater than the key at position j.
+    fn greater(&self, i: usize, j: usize) -> bool {
         let key_i = &self.keys[self.pq[i]];
         let key_j = &self.keys[self.pq[j]];
         match (key_i, key_j) {
@@ -445,7 +445,7 @@ impl<T: Ord> IndexMinPQ<T> {
 
     /// Restores heap invariant by moving up.
     fn swim(&mut self, mut k: usize) {
-        while k > 1 && self.less(k / 2, k) {
+        while k > 1 && self.greater(k / 2, k) {
             self.exch(k / 2, k);
             k /= 2;
         }
@@ -455,10 +455,10 @@ impl<T: Ord> IndexMinPQ<T> {
     fn sink(&mut self, mut k: usize) {
         while 2 * k <= self.n {
             let mut j = 2 * k;
-            if j < self.n && self.less(j, j + 1) {
+            if j < self.n && self.greater(j, j + 1) {
                 j += 1;
             }
-            if !self.less(k, j) {
+            if !self.greater(k, j) {
                 break;
             }
             self.exch(k, j);

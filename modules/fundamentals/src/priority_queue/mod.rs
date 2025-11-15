@@ -55,9 +55,6 @@ pub use index_min_pq::IndexMinPQ;
 // pub mod multiway_min_pq;
 // pub mod index_multiway_min_pq;
 
-// pub use min_pq::MinPQ;
-// pub use index_max_pq::IndexMaxPQ;
-// pub use index_min_pq::IndexMinPQ;
 // pub use binomial_min_pq::BinomialMinPQ;
 // pub use fibonacci_min_pq::FibonacciMinPQ;
 // pub use index_binomial_min_pq::IndexBinomialMinPQ;

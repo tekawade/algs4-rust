@@ -73,10 +73,7 @@ impl<T: Ord> IndexMinPQ<T> {
     /// ```
     pub fn new(max_n: usize) -> Self {
         assert!(max_n > 0, "max_n must be positive");
-        let mut keys = Vec::with_capacity(max_n);
-        for _ in 0..max_n {
-            keys.push(None);
-        }
+        let keys = vec![None; max_n];
         IndexMinPQ {
             max_n,
             n: 0,

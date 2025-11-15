@@ -427,13 +427,14 @@ impl<T: Ord> IndexMinPQ<T> {
     }
 
     /// Compares keys at heap positions i and j.
-    fn less(&self, i: usize, j: usize) -> bool {
+    fn greater(&self, i: usize, j: usize) -> bool {
         let key_i = &self.keys[self.pq[i]];
         let key_j = &self.keys[self.pq[j]];
         match (key_i, key_j) {
             (Some(a), Some(b)) => a > b,
             _ => false,
         }
+    }
     }
 
     /// Exchanges heap positions i and j (also updates qp).

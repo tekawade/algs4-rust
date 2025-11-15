@@ -4,11 +4,11 @@
 //! by Robert Sedgewick and Kevin Wayne.
 //!
 //! This module contains:
-//! - Basic collections (Bag, Queue, Stack) - Coming in Phase 2
+//! - Basic collections (Bag, Queue, Stack) - **Phase 2** ✓
+//! - Union-Find data structures - **Phase 2** ✓
+//! - I/O utilities - **Phase 1** ✓ (StdIn, StdOut, StdRandom)
+//! - Statistical functions - **Phase 1** ✓ (Stopwatch, Counter, Accumulator)
 //! - Priority queues - Coming in Phase 4
-//! - Union-Find - Coming in Phase 2
-//! - I/O utilities - **Phase 1** (StdIn, StdOut, StdRandom)
-//! - Statistical functions - **Phase 1** (Stopwatch, Counter, Accumulator)
 //!
 //! ## Example
 //!
@@ -39,11 +39,9 @@
 pub mod io;
 pub mod util;
 
-// Phase 2: Basic collections and union-find (to be implemented)
-// pub mod bag;
-// pub mod queue;
-// pub mod stack;
-// pub mod union_find;
+// Phase 2: Basic collections and union-find
+pub mod collections;
+pub mod union_find;
 
 // Phase 4: Priority queues (to be implemented)
 // pub mod priority_queue;

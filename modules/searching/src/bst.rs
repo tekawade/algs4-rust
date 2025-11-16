@@ -436,10 +436,7 @@ where
         Self::floor_helper(&self.root, key).map(|n| &n.key)
     }
 
-    fn floor_helper<'a>(
-        node: &'a Option<Box<Node<K, V>>>,
-        key: &K,
-    ) -> Option<&'a Node<K, V>> {
+    fn floor_helper<'a>(node: &'a Option<Box<Node<K, V>>>, key: &K) -> Option<&'a Node<K, V>> {
         match node {
             None => None,
             Some(n) => match key.cmp(&n.key) {
@@ -477,10 +474,7 @@ where
         Self::ceiling_helper(&self.root, key).map(|n| &n.key)
     }
 
-    fn ceiling_helper<'a>(
-        node: &'a Option<Box<Node<K, V>>>,
-        key: &K,
-    ) -> Option<&'a Node<K, V>> {
+    fn ceiling_helper<'a>(node: &'a Option<Box<Node<K, V>>>, key: &K) -> Option<&'a Node<K, V>> {
         match node {
             None => None,
             Some(n) => match key.cmp(&n.key) {
@@ -593,9 +587,7 @@ where
     fn height_helper(node: &Option<Box<Node<K, V>>>) -> isize {
         match node {
             None => -1,
-            Some(n) => {
-                1 + Self::height_helper(&n.left).max(Self::height_helper(&n.right))
-            }
+            Some(n) => 1 + Self::height_helper(&n.left).max(Self::height_helper(&n.right)),
         }
     }
 

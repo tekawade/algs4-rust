@@ -35,8 +35,12 @@ pub use bst::BST;
 pub mod separate_chaining_hash_st;
 pub use separate_chaining_hash_st::SeparateChainingHashST;
 
+pub mod red_black_bst;
+pub use red_black_bst::RedBlackBST;
+
+pub mod linear_probing_hash_st;
+pub use linear_probing_hash_st::LinearProbingHashST;
+
 // Symbol tables (to be implemented)
-// pub mod red_black_bst;
-// pub mod linear_probing_hash_st;
 // pub mod trie_st;
 // pub mod trie_set;

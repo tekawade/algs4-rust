@@ -11,13 +11,49 @@
 //! ## Example
 //!
 //! ```
-//! // Examples will be added as implementations are completed
+//! use algs4_advanced::{Complex, Vector, SegmentTree, FenwickTree};
+//!
+//! // Complex numbers
+//! let z = Complex::new(3.0, 4.0);
+//! println!("|z| = {}", z.abs()); // Magnitude: 5.0
+//!
+//! // Segment tree for range queries
+//! let mut tree = SegmentTree::new(vec![1, 3, 5, 7, 9, 11]);
+//! println!("Sum [1,3] = {}", tree.rsq(1, 3)); // 3 + 5 + 7 = 15
 //! ```
 
 #![warn(missing_docs)]
 #![warn(missing_debug_implementations)]
 
-// Modules will be added as they are implemented
-// pub mod fft;
-// pub mod linear_programming;
-// pub mod segment_tree;
+// Linear algebra
+pub mod complex;
+pub mod fft;
+pub mod polynomial;
+pub mod sparse_vector;
+pub mod vector;
+
+// Matrix operations and linear systems
+pub mod gauss_jordan_elimination;
+pub mod gaussian_elimination;
+
+// Optimization
+pub mod linear_programming;
+
+// Advanced data structures
+pub mod fenwick_tree;
+pub mod segment_tree;
+
+// Algorithms
+pub mod three_sum;
+pub mod three_sum_fast;
+
+// Re-export main types for convenience
+pub use complex::Complex;
+pub use fenwick_tree::FenwickTree;
+pub use gauss_jordan_elimination::GaussJordanElimination;
+pub use gaussian_elimination::GaussianElimination;
+pub use linear_programming::LinearProgramming;
+pub use polynomial::Polynomial;
+pub use segment_tree::SegmentTree;
+pub use sparse_vector::SparseVector;
+pub use vector::Vector;

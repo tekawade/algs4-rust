@@ -178,19 +178,19 @@ mod tests {
     #[test]
     fn test_rank_multiple() {
         let arr = [2, 4, 6, 8, 10];
-        assert_eq!(rank(&arr, &1), 0);   // Before all
-        assert_eq!(rank(&arr, &2), 0);   // Equal to first
-        assert_eq!(rank(&arr, &3), 1);   // Between 2 and 4
-        assert_eq!(rank(&arr, &5), 2);   // Between 4 and 6
-        assert_eq!(rank(&arr, &10), 4);  // Equal to last
-        assert_eq!(rank(&arr, &15), 5);  // After all
+        assert_eq!(rank(&arr, &1), 0); // Before all
+        assert_eq!(rank(&arr, &2), 0); // Equal to first
+        assert_eq!(rank(&arr, &3), 1); // Between 2 and 4
+        assert_eq!(rank(&arr, &5), 2); // Between 4 and 6
+        assert_eq!(rank(&arr, &10), 4); // Equal to last
+        assert_eq!(rank(&arr, &15), 5); // After all
     }
 
     #[test]
     fn test_rank_duplicates() {
         let arr = [1, 3, 3, 3, 5, 7];
-        assert_eq!(rank(&arr, &3), 1);  // Points to first occurrence
-        assert_eq!(rank(&arr, &4), 4);  // Points after last 3
+        assert_eq!(rank(&arr, &3), 1); // Points to first occurrence
+        assert_eq!(rank(&arr, &4), 4); // Points after last 3
     }
 
     #[test]

@@ -194,15 +194,13 @@ impl<V> TrieST<V> {
     /// assert_eq!(trie.size(), 2);
     /// ```
     pub fn put(&mut self, key: &str, val: V) {
-        let old_size = self.n;
+        // Check if the key existed before insertion
+        let existed = Self::get_helper(&self.root, key, 0)
+            .map_or(false, |node| node.val.is_some());
         self.root = Self::put_helper(self.root.take(), key, val, 0);
-        // Check if we actually added a new key
-        if let Some(node) = Self::get_helper(&self.root, key, 0) {
-            if node.val.is_some() && old_size == self.n {
-                // This was an update, not an insert
-            } else if node.val.is_some() {
-                self.n += 1;
-            }
+        // If the key did not exist before, increment size
+        if !existed {
+            self.n += 1;
         }
     }
 

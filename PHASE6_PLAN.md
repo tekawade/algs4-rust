@@ -406,17 +406,17 @@ modules/searching/
 ## Success Criteria
 
 ### Phase 6 Complete When:
-- [x] All 20 files implemented
-- [x] 200+ unit tests passing
-- [x] BST invariants verified
-- [x] Red-black tree properties verified
-- [x] Hash table resizing tested
-- [x] Trie prefix operations tested
-- [x] All ordered operations correct (floor, ceiling, rank, select, range)
-- [x] Documentation complete with examples
-- [x] Code formatted and linted (0 warnings)
-- [x] Benchmarks comparing different implementations
-- [x] CI passing
+- [ ] All 20 files implemented
+- [ ] 200+ unit tests passing
+- [ ] BST invariants verified
+- [ ] Red-black tree properties verified
+- [ ] Hash table resizing tested
+- [ ] Trie prefix operations tested
+- [ ] All ordered operations correct (floor, ceiling, rank, select, range)
+- [ ] Documentation complete with examples
+- [ ] Code formatted and linted (0 warnings)
+- [ ] Benchmarks comparing different implementations
+- [ ] CI passing
 
 ---
 

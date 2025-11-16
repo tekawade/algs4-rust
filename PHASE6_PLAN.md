@@ -351,7 +351,7 @@ pub trait SymbolTable<K, V> {
     }
     fn is_empty(&self) -> bool;
     fn size(&self) -> usize;
-    fn keys(&self) -> Box<dyn Iterator<Item = &K> + '_>;
+    fn keys(&self) -> impl Iterator<Item = &K> + '_>;
 }
 
 pub trait OrderedSymbolTable<K, V>: SymbolTable<K, V> {

@@ -268,8 +268,15 @@ where
         while self.keys[i].is_some() {
             let key_to_rehash = self.keys[i].take().unwrap();
             let val_to_rehash = self.vals[i].take().unwrap();
-            self.n -= 1;
-            self.put(key_to_rehash, val_to_rehash);
+            
+            // Reinsert without modifying the counter
+            let mut j = self.hash(&key_to_rehash);
+            while self.keys[j].is_some() {
+                j = (j + 1) % self.m;
+            }
+            self.keys[j] = Some(key_to_rehash);
+            self.vals[j] = Some(val_to_rehash);
+            
             i = (i + 1) % self.m;
         }
 

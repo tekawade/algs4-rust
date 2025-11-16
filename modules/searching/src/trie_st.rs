@@ -65,11 +65,20 @@ impl<V: fmt::Debug> fmt::Debug for Node<V> {
     }
 }
 
-impl<V> Node<V> {
+impl<V: Clone> Node<V> {
     fn new() -> Self {
         Node {
             val: None,
             next: vec![None; R],
+        }
+    }
+}
+
+impl<V: Clone> Clone for Node<V> {
+    fn clone(&self) -> Self {
+        Node {
+            val: self.val.clone(),
+            next: self.next.clone(),
         }
     }
 }
@@ -193,7 +202,10 @@ impl<V> TrieST<V> {
     /// assert_eq!(trie.get("she"), Some(&1));
     /// assert_eq!(trie.size(), 2);
     /// ```
-    pub fn put(&mut self, key: &str, val: V) {
+    pub fn put(&mut self, key: &str, val: V)
+    where
+        V: Clone,
+    {
         // Check if the key existed before insertion
         let existed = Self::get_helper(&self.root, key, 0)
             .map_or(false, |node| node.val.is_some());
@@ -204,7 +216,10 @@ impl<V> TrieST<V> {
         }
     }
 
-    fn put_helper(node: Option<Box<Node<V>>>, key: &str, val: V, d: usize) -> Option<Box<Node<V>>> {
+    fn put_helper(node: Option<Box<Node<V>>>, key: &str, val: V, d: usize) -> Option<Box<Node<V>>>
+    where
+        V: Clone,
+    {
         let mut x = node.unwrap_or_else(|| Box::new(Node::new()));
 
         if d == key.len() {

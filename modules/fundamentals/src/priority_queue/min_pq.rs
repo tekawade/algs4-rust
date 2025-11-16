@@ -367,9 +367,7 @@ impl<T: Ord> MinPQ<T> {
     where
         T: Clone,
     {
-        Iter {
-            copy: self.clone(),
-        }
+        Iter { copy: self.clone() }
     }
 }
 
@@ -408,7 +406,7 @@ impl<T: Ord + Clone> Iterator for Iter<T> {
     }
 }
 
-impl<'a, T: Ord + Clone> IntoIterator for &'a MinPQ<T> {
+impl<T: Ord + Clone> IntoIterator for &MinPQ<T> {
     type Item = T;
     type IntoIter = Iter<T>;
 

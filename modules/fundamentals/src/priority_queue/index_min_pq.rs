@@ -45,14 +45,14 @@ use std::fmt;
 /// * Is empty: O(1)
 #[derive(Debug, Clone)]
 pub struct IndexMinPQ<T> {
-    max_n: usize,               // maximum number of elements
-    n: usize,                   // current number of elements
-    pq: Vec<usize>,             // binary heap using 1-based indexing (stores indices)
-    qp: Vec<Option<usize>>,     // inverse: qp[pq[i]] = i (None if index not in PQ)
-    keys: Vec<Option<T>>,       // keys[i] = priority of i
+    max_n: usize,           // maximum number of elements
+    n: usize,               // current number of elements
+    pq: Vec<usize>,         // binary heap using 1-based indexing (stores indices)
+    qp: Vec<Option<usize>>, // inverse: qp[pq[i]] = i (None if index not in PQ)
+    keys: Vec<Option<T>>,   // keys[i] = priority of i
 }
 
-impl<T: Ord> IndexMinPQ<T> {
+impl<T: Ord + Clone> IndexMinPQ<T> {
     /// Creates an empty indexed priority queue with indices from 0 to max_n-1.
     ///
     /// # Arguments
@@ -77,7 +77,7 @@ impl<T: Ord> IndexMinPQ<T> {
         IndexMinPQ {
             max_n,
             n: 0,
-            pq: vec![0; max_n + 1],       // 1-based indexing
+            pq: vec![0; max_n + 1], // 1-based indexing
             qp: vec![None; max_n],
             keys,
         }
@@ -420,7 +420,12 @@ impl<T: Ord> IndexMinPQ<T> {
 
     /// Validates that the given index is in range.
     fn validate_index(&self, i: usize) {
-        assert!(i < self.max_n, "index {} is out of bounds (max_n = {})", i, self.max_n);
+        assert!(
+            i < self.max_n,
+            "index {} is out of bounds (max_n = {})",
+            i,
+            self.max_n
+        );
     }
 
     /// Returns `true` if the key at position i is greater than the key at position j.
@@ -431,7 +436,6 @@ impl<T: Ord> IndexMinPQ<T> {
             (Some(a), Some(b)) => a > b,
             _ => false,
         }
-    }
     }
 
     /// Exchanges heap positions i and j (also updates qp).
@@ -465,7 +469,7 @@ impl<T: Ord> IndexMinPQ<T> {
     }
 }
 
-impl<T: Ord + fmt::Display> fmt::Display for IndexMinPQ<T> {
+impl<T: Ord + Clone + fmt::Display> fmt::Display for IndexMinPQ<T> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "[")?;
         let mut first = true;

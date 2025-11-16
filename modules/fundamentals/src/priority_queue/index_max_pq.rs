@@ -45,14 +45,14 @@ use std::fmt;
 /// * Is empty: O(1)
 #[derive(Debug, Clone)]
 pub struct IndexMaxPQ<T> {
-    max_n: usize,               // maximum number of elements
-    n: usize,                   // current number of elements
-    pq: Vec<usize>,             // binary heap using 1-based indexing (stores indices)
-    qp: Vec<Option<usize>>,     // inverse: qp[pq[i]] = i (None if index not in PQ)
-    keys: Vec<Option<T>>,       // keys[i] = priority of i
+    max_n: usize,           // maximum number of elements
+    n: usize,               // current number of elements
+    pq: Vec<usize>,         // binary heap using 1-based indexing (stores indices)
+    qp: Vec<Option<usize>>, // inverse: qp[pq[i]] = i (None if index not in PQ)
+    keys: Vec<Option<T>>,   // keys[i] = priority of i
 }
 
-impl<T: Ord> IndexMaxPQ<T> {
+impl<T: Ord + Clone> IndexMaxPQ<T> {
     /// Creates an empty indexed priority queue with indices from 0 to max_n-1.
     ///
     /// # Arguments
@@ -77,7 +77,7 @@ impl<T: Ord> IndexMaxPQ<T> {
         IndexMaxPQ {
             max_n,
             n: 0,
-            pq: vec![0; max_n + 1],       // 1-based indexing
+            pq: vec![0; max_n + 1], // 1-based indexing
             qp: vec![None; max_n],
             keys,
         }
@@ -420,7 +420,12 @@ impl<T: Ord> IndexMaxPQ<T> {
 
     /// Validates that the given index is in range.
     fn validate_index(&self, i: usize) {
-        assert!(i < self.max_n, "index {} is out of bounds (max_n = {})", i, self.max_n);
+        assert!(
+            i < self.max_n,
+            "index {} is out of bounds (max_n = {})",
+            i,
+            self.max_n
+        );
     }
 
     /// Compares keys at heap positions i and j.
@@ -464,7 +469,7 @@ impl<T: Ord> IndexMaxPQ<T> {
     }
 }
 
-impl<T: Ord + fmt::Display> fmt::Display for IndexMaxPQ<T> {
+impl<T: Ord + Clone + fmt::Display> fmt::Display for IndexMaxPQ<T> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "[")?;
         let mut first = true;

@@ -37,15 +37,15 @@
 //!
 //! **Reference:** <https://algs4.cs.princeton.edu/24pq>
 
-pub mod max_pq;
-pub mod min_pq;
 pub mod index_max_pq;
 pub mod index_min_pq;
+pub mod max_pq;
+pub mod min_pq;
 
-pub use max_pq::MaxPQ;
-pub use min_pq::MinPQ;
 pub use index_max_pq::IndexMaxPQ;
 pub use index_min_pq::IndexMinPQ;
+pub use max_pq::MaxPQ;
+pub use min_pq::MinPQ;
 
 // To be implemented:
 // pub mod binomial_min_pq;

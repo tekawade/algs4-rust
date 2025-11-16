@@ -367,9 +367,7 @@ impl<T: Ord> MaxPQ<T> {
     where
         T: Clone,
     {
-        Iter {
-            copy: self.clone(),
-        }
+        Iter { copy: self.clone() }
     }
 }
 
@@ -408,7 +406,7 @@ impl<T: Ord + Clone> Iterator for Iter<T> {
     }
 }
 
-impl<'a, T: Ord + Clone> IntoIterator for &'a MaxPQ<T> {
+impl<T: Ord + Clone> IntoIterator for &MaxPQ<T> {
     type Item = T;
     type IntoIter = Iter<T>;
 

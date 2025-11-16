@@ -50,6 +50,7 @@ pub struct TrieST<V> {
     n: usize, // Number of keys
 }
 
+#[derive(Clone)]
 struct Node<V> {
     val: Option<V>,
     next: Vec<Option<Box<Node<V>>>>,

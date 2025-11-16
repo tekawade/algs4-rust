@@ -188,7 +188,7 @@ pub struct SeparateChainingHashST<K, V> {
 
 **Features:**
 - Dynamic resizing (double/halve)
-- Load factor α = N/M ≈ 5-10
+- Load factor α = n/m ≈ 5-10
 - Uses SequentialSearchST for chains
 
 **API:** Basic symbol table API (unordered)

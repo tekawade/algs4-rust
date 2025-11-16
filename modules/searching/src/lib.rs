@@ -42,5 +42,7 @@ pub mod linear_probing_hash_st;
 pub use linear_probing_hash_st::LinearProbingHashST;
 
 // Symbol tables (to be implemented)
-// pub mod trie_st;
-// pub mod trie_set;
+pub mod trie_st;
+pub use trie_st::TrieST;
+pub mod trie_set;
+pub use trie_set::TrieSET;

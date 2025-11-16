@@ -18,9 +18,25 @@
 #![warn(missing_docs)]
 #![warn(missing_debug_implementations)]
 
-// Modules will be added as they are implemented
-// pub mod binary_search;
-// pub mod bst;
+// Binary search algorithm
+pub mod binary_search;
+pub use binary_search::{binary_search, rank};
+
+// Symbol tables
+pub mod sequential_search_st;
+pub use sequential_search_st::SequentialSearchST;
+
+pub mod binary_search_st;
+pub use binary_search_st::BinarySearchST;
+
+pub mod bst;
+pub use bst::BST;
+
+pub mod separate_chaining_hash_st;
+pub use separate_chaining_hash_st::SeparateChainingHashST;
+
+// Symbol tables (to be implemented)
 // pub mod red_black_bst;
-// pub mod hash_table;
-// pub mod trie;
+// pub mod linear_probing_hash_st;
+// pub mod trie_st;
+// pub mod trie_set;

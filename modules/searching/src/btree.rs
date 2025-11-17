@@ -79,6 +79,7 @@ impl<K: Ord, V> Node<K, V> {
         }
     }
 
+    #[allow(dead_code)]
     fn with_entry(entry: Entry<K, V>) -> Self {
         let mut node = Node::new();
         node.children.push(entry);
@@ -278,11 +279,7 @@ impl<K: Ord + Clone, V> BTree<K, V> {
             while j < node.m {
                 if j + 1 == node.m || key < node.children[j + 1].key {
                     if let Some(ref mut child) = node.children[j].next {
-                        let u = Self::insert(child, key.clone(), val.clone(), height - 1);
-                        if u.is_none() {
-                            return None;
-                        }
-                        let split = u.unwrap();
+                        let split = Self::insert(child, key.clone(), val.clone(), height - 1)?;
                         let split_key = split.children[0].key.clone();
                         let new_internal = Entry::new_internal(split_key, split);
                         j += 1;

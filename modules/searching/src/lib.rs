@@ -45,9 +45,11 @@ pub use bst::BST;
 pub mod red_black_bst;
 pub use red_black_bst::RedBlackBST;
 
+/// AVL tree symbol table implementation
 pub mod avl_tree_st;
 pub use avl_tree_st::AVLTreeST;
 
+/// B-tree implementation
 pub mod btree;
 pub use btree::BTree;
 
@@ -65,17 +67,26 @@ pub use trie_st::TrieST;
 pub mod trie_set;
 pub use trie_set::TrieSET;
 
+/// Patricia trie symbol table implementation
 pub mod patricia_st;
 pub use patricia_st::PatriciaST;
 
+/// Patricia trie set implementation
 pub mod patricia_set;
 pub use patricia_set::PatriciaSET;
 
 // Applications
+/// Count occurrences application
 pub mod count;
+/// Remove duplicates application
 pub mod dedup;
+/// File indexing application
 pub mod file_index;
+/// Frequency counter application
 pub mod frequency_counter;
+/// Keyword in context (KWIK) application
 pub mod kwik;
+/// CSV lookup application
 pub mod lookup_csv;
+/// Index lookup application
 pub mod lookup_index;

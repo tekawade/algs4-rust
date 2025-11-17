@@ -67,13 +67,10 @@ where
     pub fn add(&mut self, key: K, value: V) {
         self.forward
             .entry(key.clone())
-            .or_insert_with(HashSet::new)
+            .or_default()
             .insert(value.clone());
 
-        self.reverse
-            .entry(value)
-            .or_insert_with(HashSet::new)
-            .insert(key);
+        self.reverse.entry(value).or_default().insert(key);
     }
 
     /// Returns all values associated with the given key.

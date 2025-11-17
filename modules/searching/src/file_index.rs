@@ -58,10 +58,7 @@ impl<K: Eq + std::hash::Hash + Clone, F: Eq + std::hash::Hash + Clone> FileIndex
     /// assert!(index.contains("term"));
     /// ```
     pub fn add_entry(&mut self, key: K, file: F) {
-        self.index
-            .entry(key)
-            .or_insert_with(HashSet::new)
-            .insert(file);
+        self.index.entry(key).or_default().insert(file);
     }
 
     /// Returns all files containing the given key.

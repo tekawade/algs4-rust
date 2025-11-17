@@ -233,9 +233,9 @@ mod tests {
     #[test]
     fn test_large_text() {
         let mut words = Vec::new();
-        words.extend(std::iter::repeat("common").take(100));
-        words.extend(std::iter::repeat("less").take(50));
-        words.extend(std::iter::repeat("rare").take(10));
+        words.extend(std::iter::repeat_n("common", 100));
+        words.extend(std::iter::repeat_n("less", 50));
+        words.extend(std::iter::repeat_n("rare", 10));
 
         let stats = analyze_frequencies(&words, 1).unwrap();
         assert_eq!(stats.most_frequent_word, "common");

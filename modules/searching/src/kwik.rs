@@ -18,7 +18,7 @@
 use std::collections::HashMap;
 
 /// KWIK (Keyword in Context) index.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct KWIK {
     index: HashMap<String, Vec<Context>>,
 }
@@ -191,14 +191,6 @@ impl KWIK {
     /// ```
     pub fn is_empty(&self) -> bool {
         self.index.is_empty()
-    }
-}
-
-impl Default for KWIK {
-    fn default() -> Self {
-        KWIK {
-            index: HashMap::new(),
-        }
     }
 }
 

@@ -174,7 +174,7 @@ impl<V> TrieST<V> {
         node: &'a Option<Box<Node<V>>>,
         key: &str,
         d: usize,
-    ) -> Option<&'a Box<Node<V>>> {
+    ) -> Option<&'a Node<V>> {
         match node {
             None => None,
             Some(x) => {
@@ -278,7 +278,7 @@ impl<V> TrieST<V> {
         results
     }
 
-    fn collect(node: Option<&Box<Node<V>>>, prefix: &mut String, results: &mut Vec<String>) {
+    fn collect(node: Option<&Node<V>>, prefix: &mut String, results: &mut Vec<String>) {
         if let Some(x) = node {
             if x.val.is_some() {
                 results.push(prefix.clone());
@@ -286,7 +286,7 @@ impl<V> TrieST<V> {
             for c in 0..R {
                 if x.next[c].is_some() {
                     prefix.push(c as u8 as char);
-                    Self::collect(x.next[c].as_ref(), prefix, results);
+                    Self::collect(x.next[c].as_deref(), prefix, results);
                     prefix.pop();
                 }
             }

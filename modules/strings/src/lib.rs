@@ -8,18 +8,44 @@
 //! - Regular expressions (NFA)
 //! - Data compression (LZW, Huffman, Run-length)
 //! - Suffix arrays
+//! - Alphabet data types
 //!
-//! ## Example
+//! ## Pattern Matching Example
 //!
 //! ```
-//! // Examples will be added as implementations are completed
+//! use algs4_strings::pattern_matching::KMP;
+//!
+//! let kmp = KMP::new("NEEDLE");
+//! let text = "FINDINANEEDLEINTHEHAYSTACK";
+//! assert_eq!(kmp.search(text), Some(7));
+//! ```
+//!
+//! ## Compression Example
+//!
+//! ```
+//! use algs4_strings::compression::Huffman;
+//!
+//! let data = b"ABRACADABRA!";
+//! let compressed = Huffman::compress(data);
+//! let decompressed = Huffman::decompress(&compressed);
+//! assert_eq!(decompressed, data);
+//! ```
+//!
+//! ## Regular Expression Example
+//!
+//! ```
+//! use algs4_strings::regex::NFA;
+//!
+//! let nfa = NFA::new("(A*B|AC)D");
+//! assert!(nfa.recognizes("AABD"));
+//! assert!(nfa.recognizes("ACD"));
 //! ```
 
 #![warn(missing_docs)]
 #![warn(missing_debug_implementations)]
 
-// Modules will be added as they are implemented
-// pub mod pattern_matching;
-// pub mod regex;
-// pub mod compression;
-// pub mod suffix_array;
+pub mod alphabet;
+pub mod compression;
+pub mod pattern_matching;
+pub mod regex;
+pub mod suffix_array;

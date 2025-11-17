@@ -98,7 +98,12 @@ where
             keys.push(None);
             vals.push(None);
         }
-        LinearProbingHashST { keys, vals, n: 0, m }
+        LinearProbingHashST {
+            keys,
+            vals,
+            n: 0,
+            m,
+        }
     }
 
     /// Returns the number of key-value pairs in the hash table.
@@ -268,7 +273,7 @@ where
         while self.keys[i].is_some() {
             let key_to_rehash = self.keys[i].take().unwrap();
             let val_to_rehash = self.vals[i].take().unwrap();
-            
+
             // Reinsert without modifying the counter
             let mut j = self.hash(&key_to_rehash);
             while self.keys[j].is_some() {
@@ -276,7 +281,7 @@ where
             }
             self.keys[j] = Some(key_to_rehash);
             self.vals[j] = Some(val_to_rehash);
-            
+
             i = (i + 1) % self.m;
         }
 

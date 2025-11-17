@@ -280,8 +280,9 @@ mod tests {
     fn test_suffix_array_x_lcp() {
         let sa = SuffixArrayX::new("ABRACADABRA");
         assert_eq!(sa.lcp(0), 0);
+        // Verify LCPs are computable for all indices
         for i in 1..sa.length() {
-            assert!(sa.lcp(i) >= 0);
+            let _ = sa.lcp(i); // Just verify it doesn't panic
         }
     }
 

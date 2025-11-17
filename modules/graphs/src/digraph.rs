@@ -27,10 +27,10 @@ use std::fmt;
 /// ```
 #[derive(Debug, Clone)]
 pub struct Digraph {
-    v: usize,              // number of vertices
-    e: usize,              // number of edges
-    adj: Vec<Vec<usize>>,  // adjacency lists (outgoing edges)
-    indegree: Vec<usize>,  // indegree of each vertex
+    v: usize,             // number of vertices
+    e: usize,             // number of edges
+    adj: Vec<Vec<usize>>, // adjacency lists (outgoing edges)
+    indegree: Vec<usize>, // indegree of each vertex
 }
 
 impl Digraph {
@@ -371,7 +371,7 @@ mod tests {
     fn test_parallel_edges() {
         let mut digraph = Digraph::new(2);
         digraph.add_edge(0, 1);
-        digraph.add_edge(0, 1);  // parallel edge
+        digraph.add_edge(0, 1); // parallel edge
 
         assert_eq!(digraph.e(), 2);
         assert_eq!(digraph.outdegree(0), 2);
@@ -382,7 +382,7 @@ mod tests {
     #[should_panic(expected = "vertex 5 is not between 0 and 4")]
     fn test_invalid_vertex() {
         let mut digraph = Digraph::new(5);
-        digraph.add_edge(0, 5);  // invalid vertex
+        digraph.add_edge(0, 5); // invalid vertex
     }
 
     #[test]

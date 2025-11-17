@@ -28,7 +28,6 @@
 pub struct KMP {
     pattern: Vec<u8>,
     dfa: Vec<Vec<usize>>,
-    radix: usize,
 }
 
 impl KMP {
@@ -56,8 +55,8 @@ impl KMP {
         let mut x = 0; // Restart state
         for j in 1..m {
             // Copy mismatch cases
-            for c in 0..radix {
-                dfa[c][j] = dfa[c][x];
+            for item in dfa.iter_mut().take(radix) {
+                item[j] = item[x];
             }
             // Set match case
             dfa[pattern[j] as usize][j] = j + 1;
@@ -68,7 +67,6 @@ impl KMP {
         KMP {
             pattern: pattern.to_vec(),
             dfa,
-            radix,
         }
     }
 
@@ -101,7 +99,6 @@ impl KMP {
     /// assert_eq!(kmp.search_bytes(b"BCBAABACAA"), None);
     /// ```
     pub fn search_bytes(&self, text: &[u8]) -> Option<usize> {
-        let n = text.len();
         let m = self.pattern.len();
 
         let mut j = 0; // Pattern position

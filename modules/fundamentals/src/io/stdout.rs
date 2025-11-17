@@ -113,7 +113,7 @@ mod tests {
         // Just verify it doesn't panic
         println("test");
         println(42);
-        println(3.14);
+        println(std::f64::consts::PI);
     }
 
     #[test]

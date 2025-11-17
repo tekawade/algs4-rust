@@ -106,10 +106,8 @@ impl NFA {
 
             // For each state in pc, if we can match ch, add next state
             for &v in &pc {
-                if v < self.m {
-                    if self.regex[v] == ch || self.regex[v] == '.' {
-                        match_states.insert(v + 1);
-                    }
+                if v < self.m && (self.regex[v] == ch || self.regex[v] == '.') {
+                    match_states.insert(v + 1);
                 }
             }
 
@@ -135,6 +133,7 @@ impl NFA {
     }
 
     /// Depth-first search to find states reachable via epsilon transitions.
+    #[allow(clippy::only_used_in_recursion)]
     fn dfs(&self, graph: &[Vec<usize>], v: usize, visited: &mut HashSet<usize>) {
         if visited.contains(&v) {
             return;

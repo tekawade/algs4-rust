@@ -147,7 +147,7 @@ impl SegmentTree {
     /// use algs4_advanced::SegmentTree;
     ///
     /// let array = vec![1, 3, 5, 7, 9, 11];
-    /// let tree = SegmentTree::new(array);
+    /// let mut tree = SegmentTree::new(array);
     ///
     /// assert_eq!(tree.rsq(1, 3), 15); // 3 + 5 + 7 = 15
     /// assert_eq!(tree.rsq(0, 5), 36); // 1 + 3 + 5 + 7 + 9 + 11 = 36
@@ -199,7 +199,7 @@ impl SegmentTree {
     /// use algs4_advanced::SegmentTree;
     ///
     /// let array = vec![1, 3, 5, 7, 9, 11];
-    /// let tree = SegmentTree::new(array);
+    /// let mut tree = SegmentTree::new(array);
     ///
     /// assert_eq!(tree.r_min_q(1, 3), 3);
     /// assert_eq!(tree.r_min_q(0, 5), 1);

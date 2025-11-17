@@ -74,6 +74,7 @@ impl Ord for Node {
 /// let decompressed = Huffman::decompress(&compressed);
 /// assert_eq!(decompressed, data);
 /// ```
+#[derive(Debug)]
 pub struct Huffman;
 
 impl Huffman {

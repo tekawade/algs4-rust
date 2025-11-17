@@ -269,11 +269,11 @@ mod tests {
     fn test_directed_path() {
         let mut digraph = Digraph::new(3);
         digraph.add_edge(0, 1);
-        digraph.add_edge(2, 1);  // edge from 2 to 1, not 1 to 2
+        digraph.add_edge(2, 1); // edge from 2 to 1, not 1 to 2
 
         let bfs = BreadthFirstDirectedPaths::new(&digraph, 0);
         assert!(bfs.has_path_to(1));
-        assert!(!bfs.has_path_to(2));  // no path from 0 to 2
+        assert!(!bfs.has_path_to(2)); // no path from 0 to 2
 
         let bfs2 = BreadthFirstDirectedPaths::new(&digraph, 2);
         assert!(bfs2.has_path_to(1));

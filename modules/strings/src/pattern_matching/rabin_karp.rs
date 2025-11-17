@@ -88,8 +88,8 @@ impl RabinKarp {
     /// Computes the hash of the first m characters of the given key.
     fn hash(key: &[u8], m: usize, radix: u64, q: u64) -> u64 {
         let mut h = 0u64;
-        for i in 0..m.min(key.len()) {
-            h = (radix * h + key[i] as u64) % q;
+        for &byte in key.iter().take(m) {
+            h = (radix * h + byte as u64) % q;
         }
         h
     }

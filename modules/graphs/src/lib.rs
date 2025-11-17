@@ -48,33 +48,33 @@
 #![warn(missing_debug_implementations)]
 
 // Graph data structures
-mod graph;
 mod digraph;
-mod edge;
 mod directed_edge;
-mod edge_weighted_graph;
+mod edge;
 mod edge_weighted_digraph;
+mod edge_weighted_graph;
+mod graph;
 
 // Undirected graph traversal
-mod depth_first_paths;
 mod breadth_first_paths;
 mod cc;
+mod depth_first_paths;
 
 // Directed graph traversal
-mod depth_first_directed_paths;
 mod breadth_first_directed_paths;
+mod depth_first_directed_paths;
 
 // Public exports
-pub use graph::Graph;
 pub use digraph::Digraph;
-pub use edge::Edge;
 pub use directed_edge::DirectedEdge;
-pub use edge_weighted_graph::EdgeWeightedGraph;
+pub use edge::Edge;
 pub use edge_weighted_digraph::EdgeWeightedDigraph;
+pub use edge_weighted_graph::EdgeWeightedGraph;
+pub use graph::Graph;
 
-pub use depth_first_paths::DepthFirstPaths;
 pub use breadth_first_paths::BreadthFirstPaths;
 pub use cc::CC;
+pub use depth_first_paths::DepthFirstPaths;
 
-pub use depth_first_directed_paths::DepthFirstDirectedPaths;
 pub use breadth_first_directed_paths::BreadthFirstDirectedPaths;
+pub use depth_first_directed_paths::DepthFirstDirectedPaths;

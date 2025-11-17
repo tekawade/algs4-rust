@@ -26,9 +26,9 @@ use std::fmt;
 /// ```
 #[derive(Debug, Clone)]
 pub struct Graph {
-    v: usize,              // number of vertices
-    e: usize,              // number of edges
-    adj: Vec<Vec<usize>>,  // adjacency lists
+    v: usize,             // number of vertices
+    e: usize,             // number of edges
+    adj: Vec<Vec<usize>>, // adjacency lists
 }
 
 impl Graph {
@@ -244,7 +244,7 @@ impl Graph {
                 }
             }
         }
-        count / 2  // each self-loop counted twice
+        count / 2 // each self-loop counted twice
     }
 }
 
@@ -343,7 +343,7 @@ mod tests {
     fn test_parallel_edges() {
         let mut graph = Graph::new(2);
         graph.add_edge(0, 1);
-        graph.add_edge(0, 1);  // parallel edge
+        graph.add_edge(0, 1); // parallel edge
 
         assert_eq!(graph.e(), 2);
         assert_eq!(graph.degree(0), 2);
@@ -354,7 +354,7 @@ mod tests {
     #[should_panic(expected = "vertex 5 is not between 0 and 4")]
     fn test_invalid_vertex() {
         let mut graph = Graph::new(5);
-        graph.add_edge(0, 5);  // invalid vertex
+        graph.add_edge(0, 5); // invalid vertex
     }
 
     #[test]

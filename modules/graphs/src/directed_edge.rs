@@ -21,9 +21,9 @@ use std::fmt;
 /// ```
 #[derive(Debug, Clone, Copy)]
 pub struct DirectedEdge {
-    v: usize,      // from vertex
-    w: usize,      // to vertex
-    weight: f64,   // edge weight
+    v: usize,    // from vertex
+    w: usize,    // to vertex
+    weight: f64, // edge weight
 }
 
 impl DirectedEdge {
@@ -109,7 +109,9 @@ impl PartialOrd for DirectedEdge {
 
 impl Ord for DirectedEdge {
     fn cmp(&self, other: &Self) -> Ordering {
-        self.weight.partial_cmp(&other.weight).unwrap_or(Ordering::Equal)
+        self.weight
+            .partial_cmp(&other.weight)
+            .unwrap_or(Ordering::Equal)
     }
 }
 
@@ -152,7 +154,7 @@ mod tests {
 
     #[test]
     fn test_ordering() {
-        let mut edges = vec![
+        let mut edges = [
             DirectedEdge::new(0, 1, 0.5),
             DirectedEdge::new(1, 2, 0.3),
             DirectedEdge::new(2, 3, 0.7),

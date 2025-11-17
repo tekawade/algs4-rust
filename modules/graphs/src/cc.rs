@@ -26,10 +26,10 @@ use crate::graph::Graph;
 /// ```
 #[derive(Debug)]
 pub struct CC {
-    marked: Vec<bool>,  // marked[v] = has vertex v been marked?
-    id: Vec<usize>,     // id[v] = component identifier for v
-    size: Vec<usize>,   // size[id] = number of vertices in component id
-    count: usize,       // number of connected components
+    marked: Vec<bool>, // marked[v] = has vertex v been marked?
+    id: Vec<usize>,    // id[v] = component identifier for v
+    size: Vec<usize>,  // size[id] = number of vertices in component id
+    count: usize,      // number of connected components
 }
 
 impl CC {
@@ -84,7 +84,11 @@ impl CC {
     /// Validates that vertex v is a valid vertex.
     fn validate_vertex(&self, v: usize) {
         if v >= self.marked.len() {
-            panic!("vertex {} is not between 0 and {}", v, self.marked.len() - 1);
+            panic!(
+                "vertex {} is not between 0 and {}",
+                v,
+                self.marked.len() - 1
+            );
         }
     }
 

@@ -288,8 +288,8 @@ impl Vector {
     ///
     /// let v = Vector::from_slice(&[3.0, 4.0]);
     /// let dir = v.direction();
-    /// assert_eq!(dir.cartesian(0), 0.6);
-    /// assert_eq!(dir.cartesian(1), 0.8);
+    /// assert!((dir.cartesian(0) - 0.6).abs() < 1e-10);
+    /// assert!((dir.cartesian(1) - 0.8).abs() < 1e-10);
     /// assert!((dir.magnitude() - 1.0).abs() < 1e-10);
     /// ```
     pub fn direction(&self) -> Vector {

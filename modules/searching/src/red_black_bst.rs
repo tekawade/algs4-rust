@@ -64,7 +64,7 @@ struct Node<K, V> {
     val: V,
     left: Option<Box<Node<K, V>>>,
     right: Option<Box<Node<K, V>>>,
-    n: usize,   // Subtree size
+    n: usize,    // Subtree size
     color: bool, // Color of parent link (RED or BLACK)
 }
 
@@ -371,9 +371,7 @@ where
     fn height_helper(node: &Option<Box<Node<K, V>>>) -> isize {
         match node {
             None => -1,
-            Some(n) => {
-                1 + Self::height_helper(&n.left).max(Self::height_helper(&n.right))
-            }
+            Some(n) => 1 + Self::height_helper(&n.left).max(Self::height_helper(&n.right)),
         }
     }
 
@@ -583,7 +581,11 @@ mod tests {
         for i in 0..20 {
             bst.put(i, i * 10);
             // Check invariants after each insertion
-            assert!(bst.is_red_black(), "Invariants violated after inserting {}", i);
+            assert!(
+                bst.is_red_black(),
+                "Invariants violated after inserting {}",
+                i
+            );
         }
     }
 
@@ -594,7 +596,11 @@ mod tests {
         // Insert in reverse sorted order
         for i in (0..20).rev() {
             bst.put(i, i * 10);
-            assert!(bst.is_red_black(), "Invariants violated after inserting {}", i);
+            assert!(
+                bst.is_red_black(),
+                "Invariants violated after inserting {}",
+                i
+            );
         }
     }
 

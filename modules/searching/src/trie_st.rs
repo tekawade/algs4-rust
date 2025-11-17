@@ -59,7 +59,10 @@ impl<V: fmt::Debug> fmt::Debug for Node<V> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("Node")
             .field("val", &self.val)
-            .field("next_count", &self.next.iter().filter(|n| n.is_some()).count())
+            .field(
+                "next_count",
+                &self.next.iter().filter(|n| n.is_some()).count(),
+            )
             .finish()
     }
 }
@@ -206,8 +209,7 @@ impl<V> TrieST<V> {
         V: Clone,
     {
         // Check if the key existed before insertion
-        let existed = Self::get_helper(&self.root, key, 0)
-            .is_some_and(|node| node.val.is_some());
+        let existed = Self::get_helper(&self.root, key, 0).map_or(false, |node| node.val.is_some());
         self.root = Self::put_helper(self.root.take(), key, val, 0);
         // If the key did not exist before, increment size
         if !existed {

@@ -50,7 +50,6 @@ pub struct TrieST<V> {
     n: usize, // Number of keys
 }
 
-#[derive(Clone)]
 struct Node<V> {
     val: Option<V>,
     next: Vec<Option<Box<Node<V>>>>,
@@ -172,7 +171,7 @@ impl<V> TrieST<V> {
         node: &'a Option<Box<Node<V>>>,
         key: &str,
         d: usize,
-    ) -> Option<&'a Box<Node<V>>> {
+    ) -> Option<&'a Node<V>> {
         match node {
             None => None,
             Some(x) => {
@@ -208,7 +207,7 @@ impl<V> TrieST<V> {
     {
         // Check if the key existed before insertion
         let existed = Self::get_helper(&self.root, key, 0)
-            .map_or(false, |node| node.val.is_some());
+            .is_some_and(|node| node.val.is_some());
         self.root = Self::put_helper(self.root.take(), key, val, 0);
         // If the key did not exist before, increment size
         if !existed {
@@ -277,7 +276,7 @@ impl<V> TrieST<V> {
         results
     }
 
-    fn collect(node: Option<&Box<Node<V>>>, prefix: &mut String, results: &mut Vec<String>) {
+    fn collect(node: Option<&Node<V>>, prefix: &mut String, results: &mut Vec<String>) {
         if let Some(x) = node {
             if x.val.is_some() {
                 results.push(prefix.clone());
@@ -285,7 +284,7 @@ impl<V> TrieST<V> {
             for c in 0..R {
                 if x.next[c].is_some() {
                     prefix.push(c as u8 as char);
-                    Self::collect(x.next[c].as_ref(), prefix, results);
+                    Self::collect(x.next[c].as_deref(), prefix, results);
                     prefix.pop();
                 }
             }

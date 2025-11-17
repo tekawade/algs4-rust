@@ -6,25 +6,75 @@
 //! This module contains:
 //! - Graph representations (undirected, directed, weighted)
 //! - Graph traversal (DFS, BFS)
-//! - Shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall)
-//! - Minimum spanning trees (Prim, Kruskal, Boruvka)
-//! - Maximum flow (Ford-Fulkerson)
-//! - Topological sort, strongly connected components
+//! - Connected components
+//! - Shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall) - coming in Phase 7A
+//! - Minimum spanning trees (Prim, Kruskal, Boruvka) - coming in Phase 7A
+//! - Maximum flow (Ford-Fulkerson) - coming in Phase 7B
+//! - Topological sort, strongly connected components - coming in Phase 7B
 //!
 //! ## Example
 //!
 //! ```
-//! // Examples will be added as implementations are completed
+//! use algs4_graphs::{Graph, DepthFirstPaths, BreadthFirstPaths, CC};
+//!
+//! // Create an undirected graph
+//! let mut graph = Graph::new(6);
+//! graph.add_edge(0, 1);
+//! graph.add_edge(0, 2);
+//! graph.add_edge(1, 3);
+//! graph.add_edge(2, 3);
+//! graph.add_edge(4, 5);
+//!
+//! // Find paths using DFS
+//! let dfs = DepthFirstPaths::new(&graph, 0);
+//! if let Some(path) = dfs.path_to(3) {
+//!     println!("Path from 0 to 3: {:?}", path);
+//! }
+//!
+//! // Find shortest paths using BFS
+//! let bfs = BreadthFirstPaths::new(&graph, 0);
+//! if let Some(dist) = bfs.dist_to(3) {
+//!     println!("Distance from 0 to 3: {}", dist);
+//! }
+//!
+//! // Find connected components
+//! let cc = CC::new(&graph);
+//! println!("Number of connected components: {}", cc.count());
+//! println!("0 and 3 connected? {}", cc.connected(0, 3));
+//! println!("0 and 4 connected? {}", cc.connected(0, 4));
 //! ```
 
 #![warn(missing_docs)]
 #![warn(missing_debug_implementations)]
 
-// Modules will be added as they are implemented
-// pub mod graph;
-// pub mod digraph;
-// pub mod dfs;
-// pub mod bfs;
-// pub mod shortest_paths;
-// pub mod mst;
-// pub mod flow;
+// Graph data structures
+mod graph;
+mod digraph;
+mod edge;
+mod directed_edge;
+mod edge_weighted_graph;
+mod edge_weighted_digraph;
+
+// Undirected graph traversal
+mod depth_first_paths;
+mod breadth_first_paths;
+mod cc;
+
+// Directed graph traversal
+mod depth_first_directed_paths;
+mod breadth_first_directed_paths;
+
+// Public exports
+pub use graph::Graph;
+pub use digraph::Digraph;
+pub use edge::Edge;
+pub use directed_edge::DirectedEdge;
+pub use edge_weighted_graph::EdgeWeightedGraph;
+pub use edge_weighted_digraph::EdgeWeightedDigraph;
+
+pub use depth_first_paths::DepthFirstPaths;
+pub use breadth_first_paths::BreadthFirstPaths;
+pub use cc::CC;
+
+pub use depth_first_directed_paths::DepthFirstDirectedPaths;
+pub use breadth_first_directed_paths::BreadthFirstDirectedPaths;

@@ -229,9 +229,9 @@ mod tests {
         let sa = SuffixArray::new("ABRACADABRA");
         // LCP of first suffix is always 0
         assert_eq!(sa.lcp(0), 0);
-        // Other LCPs should be non-negative
+        // Verify LCPs are computable for all indices
         for i in 1..sa.length() {
-            assert!(sa.lcp(i) >= 0);
+            let _ = sa.lcp(i); // Just verify it doesn't panic
         }
     }
 

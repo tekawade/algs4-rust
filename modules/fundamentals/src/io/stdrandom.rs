@@ -484,7 +484,7 @@ mod tests {
     fn test_uniform_f64() {
         for _ in 0..100 {
             let x = uniform_f64();
-            assert!(x >= 0.0 && x < 1.0);
+            assert!((0.0..1.0).contains(&x));
         }
     }
 
@@ -492,7 +492,7 @@ mod tests {
     fn test_uniform_range_f64() {
         for _ in 0..100 {
             let x = uniform_range_f64(10.0, 20.0);
-            assert!(x >= 10.0 && x < 20.0);
+            assert!((10.0..20.0).contains(&x));
         }
     }
 
@@ -508,7 +508,7 @@ mod tests {
     fn test_uniform_i32() {
         for _ in 0..100 {
             let x = uniform_i32(10);
-            assert!(x >= 0 && x < 10);
+            assert!((0..10).contains(&x));
         }
     }
 
@@ -516,7 +516,7 @@ mod tests {
     fn test_uniform_range_i32() {
         for _ in 0..100 {
             let x = uniform_range_i32(10, 20);
-            assert!(x >= 10 && x < 20);
+            assert!((10..20).contains(&x));
         }
     }
 

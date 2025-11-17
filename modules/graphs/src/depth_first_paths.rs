@@ -25,7 +25,7 @@ use crate::graph::Graph;
 /// ```
 #[derive(Debug)]
 pub struct DepthFirstPaths {
-    marked: Vec<bool>,          // marked[v] = true if v is connected to source
+    marked: Vec<bool>,           // marked[v] = true if v is connected to source
     edge_to: Vec<Option<usize>>, // edge_to[v] = previous vertex on path from source to v
     s: usize,                    // source vertex
 }

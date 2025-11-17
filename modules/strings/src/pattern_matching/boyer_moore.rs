@@ -24,7 +24,6 @@
 pub struct BoyerMoore {
     pattern: Vec<u8>,
     right: Vec<isize>,
-    radix: usize,
 }
 
 impl BoyerMoore {
@@ -43,7 +42,6 @@ impl BoyerMoore {
     /// ```
     pub fn from_bytes(pattern: &[u8]) -> Self {
         let radix = 256; // Extended ASCII
-        let m = pattern.len();
 
         // Build right array: for each character, store the rightmost position
         // in the pattern (or -1 if not in the pattern)
@@ -55,7 +53,6 @@ impl BoyerMoore {
         BoyerMoore {
             pattern: pattern.to_vec(),
             right,
-            radix,
         }
     }
 

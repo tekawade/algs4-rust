@@ -20,6 +20,7 @@ use std::collections::HashMap;
 /// let decompressed = LZW::decompress(&compressed);
 /// assert_eq!(decompressed, data);
 /// ```
+#[derive(Debug)]
 pub struct LZW;
 
 impl LZW {

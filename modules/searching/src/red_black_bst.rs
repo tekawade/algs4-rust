@@ -424,6 +424,7 @@ where
     }
 
     #[cfg(test)]
+    #[allow(clippy::only_used_in_recursion)]
     fn is_balanced_helper(&self, node: &Option<Box<Node<K, V>>>, black: usize) -> bool {
         match node {
             None => black == 0,
@@ -444,6 +445,7 @@ where
     }
 
     #[cfg(test)]
+    #[allow(clippy::only_used_in_recursion)]
     fn is_23_helper(&self, node: &Option<Box<Node<K, V>>>) -> bool {
         match node {
             None => true,

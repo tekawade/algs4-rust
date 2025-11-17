@@ -23,9 +23,9 @@ use std::fmt;
 /// ```
 #[derive(Debug, Clone)]
 pub struct EdgeWeightedGraph {
-    v: usize,             // number of vertices
-    e: usize,             // number of edges
-    adj: Vec<Vec<Edge>>,  // adjacency lists
+    v: usize,            // number of vertices
+    e: usize,            // number of edges
+    adj: Vec<Vec<Edge>>, // adjacency lists
 }
 
 impl EdgeWeightedGraph {

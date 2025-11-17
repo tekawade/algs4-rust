@@ -23,10 +23,10 @@ use std::fmt;
 /// ```
 #[derive(Debug, Clone)]
 pub struct EdgeWeightedDigraph {
-    v: usize,                      // number of vertices
-    e: usize,                      // number of edges
-    adj: Vec<Vec<DirectedEdge>>,   // adjacency lists
-    indegree: Vec<usize>,          // indegree of each vertex
+    v: usize,                    // number of vertices
+    e: usize,                    // number of edges
+    adj: Vec<Vec<DirectedEdge>>, // adjacency lists
+    indegree: Vec<usize>,        // indegree of each vertex
 }
 
 impl EdgeWeightedDigraph {

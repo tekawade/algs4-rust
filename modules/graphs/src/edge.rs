@@ -123,7 +123,9 @@ impl PartialOrd for Edge {
 
 impl Ord for Edge {
     fn cmp(&self, other: &Self) -> Ordering {
-        self.weight.partial_cmp(&other.weight).unwrap_or(Ordering::Equal)
+        self.weight
+            .partial_cmp(&other.weight)
+            .unwrap_or(Ordering::Equal)
     }
 }
 
@@ -161,7 +163,7 @@ mod tests {
     #[should_panic(expected = "Illegal endpoint")]
     fn test_invalid_other() {
         let edge = Edge::new(0, 1, 0.5);
-        edge.other(2);  // vertex 2 is not an endpoint
+        edge.other(2); // vertex 2 is not an endpoint
     }
 
     #[test]
@@ -174,7 +176,7 @@ mod tests {
 
     #[test]
     fn test_ordering() {
-        let mut edges = vec![
+        let mut edges = [
             Edge::new(0, 1, 0.5),
             Edge::new(1, 2, 0.3),
             Edge::new(2, 3, 0.7),

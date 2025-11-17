@@ -25,7 +25,7 @@ use crate::digraph::Digraph;
 /// ```
 #[derive(Debug)]
 pub struct DepthFirstDirectedPaths {
-    marked: Vec<bool>,          // marked[v] = true if v is reachable from source
+    marked: Vec<bool>,           // marked[v] = true if v is reachable from source
     edge_to: Vec<Option<usize>>, // edge_to[v] = previous vertex on path from source to v
     s: usize,                    // source vertex
 }
@@ -206,11 +206,11 @@ mod tests {
     fn test_directed_path() {
         let mut digraph = Digraph::new(3);
         digraph.add_edge(0, 1);
-        digraph.add_edge(2, 1);  // edge from 2 to 1, not 1 to 2
+        digraph.add_edge(2, 1); // edge from 2 to 1, not 1 to 2
 
         let dfs = DepthFirstDirectedPaths::new(&digraph, 0);
         assert!(dfs.has_path_to(1));
-        assert!(!dfs.has_path_to(2));  // no path from 0 to 2
+        assert!(!dfs.has_path_to(2)); // no path from 0 to 2
 
         let dfs2 = DepthFirstDirectedPaths::new(&digraph, 2);
         assert!(dfs2.has_path_to(1));

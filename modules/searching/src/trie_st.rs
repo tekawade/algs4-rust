@@ -170,11 +170,7 @@ impl<V> TrieST<V> {
         node.val.as_ref()
     }
 
-    fn get_helper<'a>(
-        node: &'a Option<Box<Node<V>>>,
-        key: &str,
-        d: usize,
-    ) -> Option<&'a Node<V>> {
+    fn get_helper<'a>(node: &'a Option<Box<Node<V>>>, key: &str, d: usize) -> Option<&'a Node<V>> {
         match node {
             None => None,
             Some(x) => {
@@ -209,7 +205,7 @@ impl<V> TrieST<V> {
         V: Clone,
     {
         // Check if the key existed before insertion
-        let existed = Self::get_helper(&self.root, key, 0).map_or(false, |node| node.val.is_some());
+        let existed = Self::get_helper(&self.root, key, 0).is_some_and(|node| node.val.is_some());
         self.root = Self::put_helper(self.root.take(), key, val, 0);
         // If the key did not exist before, increment size
         if !existed {

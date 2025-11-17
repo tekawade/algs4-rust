@@ -3,8 +3,6 @@
 //! Run-length encoding is a simple compression algorithm that replaces
 //! runs of identical bits with a count of the run length.
 
-use std::io::{self, Read, Write};
-
 /// Run-length encoding compression and decompression.
 ///
 /// Compresses data by encoding runs of identical bits (0 or 1) as counts.
@@ -21,6 +19,7 @@ use std::io::{self, Read, Write};
 /// // Note: decompressed may have trailing zeros due to byte alignment
 /// assert_eq!(&decompressed[..data.len()], &data[..]);
 /// ```
+#[derive(Debug)]
 pub struct RunLength;
 
 impl RunLength {
@@ -52,14 +51,12 @@ impl RunLength {
                 result.push(run);
                 run = 1;
                 old_bit = current_bit;
+            } else if run == Self::MAX_RUN_LENGTH {
+                result.push(run);
+                run = 0;
+                result.push(0);
             } else {
-                if run == Self::MAX_RUN_LENGTH {
-                    result.push(run);
-                    run = 0;
-                    result.push(0);
-                } else {
-                    run += 1;
-                }
+                run += 1;
             }
         }
         result.push(run);

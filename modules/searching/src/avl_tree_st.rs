@@ -468,7 +468,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
         Self::select_helper(&self.root, k)
     }
 
-    fn select_helper<'a>(node: &'a Option<Box<Node<K, V>>>, k: usize) -> Option<&'a K> {
+    fn select_helper(node: &Option<Box<Node<K, V>>>, k: usize) -> Option<&K> {
         node.as_ref().and_then(|n| {
             let left_size = Node::size_of(&n.left);
             match k.cmp(&left_size) {

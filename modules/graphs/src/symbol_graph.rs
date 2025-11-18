@@ -15,7 +15,7 @@ use std::io::{self, BufRead, BufReader};
 /// # Examples
 ///
 /// ```
-/// use algs4_graphs::symbol_graph::SymbolGraph;
+/// use algs4_graphs::SymbolGraph;
 ///
 /// // Create from manually added edges
 /// let mut sg = SymbolGraph::new();
@@ -41,7 +41,7 @@ impl SymbolGraph {
     /// # Examples
     ///
     /// ```
-    /// use algs4_graphs::symbol_graph::SymbolGraph;
+    /// use algs4_graphs::SymbolGraph;
     ///
     /// let sg = SymbolGraph::new();
     /// assert_eq!(sg.num_vertices(), 0);
@@ -71,7 +71,7 @@ impl SymbolGraph {
     /// # Examples
     ///
     /// ```no_run
-    /// use algs4_graphs::symbol_graph::SymbolGraph;
+    /// use algs4_graphs::SymbolGraph;
     ///
     /// let sg = SymbolGraph::from_file("routes.txt", " ")?;
     /// # Ok::<(), std::io::Error>(())
@@ -126,7 +126,7 @@ impl SymbolGraph {
     /// # Examples
     ///
     /// ```
-    /// use algs4_graphs::symbol_graph::SymbolGraph;
+    /// use algs4_graphs::SymbolGraph;
     ///
     /// let mut sg = SymbolGraph::new();
     /// let idx1 = sg.add_vertex("Alice".to_string());
@@ -162,7 +162,7 @@ impl SymbolGraph {
     /// # Examples
     ///
     /// ```
-    /// use algs4_graphs::symbol_graph::SymbolGraph;
+    /// use algs4_graphs::SymbolGraph;
     ///
     /// let mut sg = SymbolGraph::new();
     /// sg.add_vertex("A".to_string());
@@ -180,7 +180,7 @@ impl SymbolGraph {
     /// # Examples
     ///
     /// ```
-    /// use algs4_graphs::symbol_graph::SymbolGraph;
+    /// use algs4_graphs::SymbolGraph;
     ///
     /// let mut sg = SymbolGraph::new();
     /// sg.add_vertex("Alice".to_string());

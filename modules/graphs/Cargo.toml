@@ -10,7 +10,13 @@ categories.workspace = true
 description = "Graph algorithms from Algorithms 4th Edition"
 
 [dependencies]
-algs4-fundamentals = { path = "../fundamentals" }
-algs4-searching = { path = "../searching" }
+algs4-fundamentals = { version = "0.1.0", path = "../fundamentals" }
+algs4-searching = { version = "0.1.0", path = "../searching" }
+rand.workspace = true
 
 [dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "graph_benchmarks"
+harness = false

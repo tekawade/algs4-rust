@@ -47,7 +47,14 @@ pub mod segment_tree;
 pub mod three_sum;
 pub mod three_sum_fast;
 
+// Applications and utilities
+pub mod allow_filter;
+pub mod block_filter;
+pub mod top_m;
+
 // Re-export main types for convenience
+pub use allow_filter::AllowFilter;
+pub use block_filter::BlockFilter;
 pub use complex::Complex;
 pub use fenwick_tree::FenwickTree;
 pub use gauss_jordan_elimination::GaussJordanElimination;
@@ -56,4 +63,5 @@ pub use linear_programming::LinearProgramming;
 pub use polynomial::Polynomial;
 pub use segment_tree::SegmentTree;
 pub use sparse_vector::SparseVector;
+pub use top_m::TopM;
 pub use vector::Vector;

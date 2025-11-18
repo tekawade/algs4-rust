@@ -57,6 +57,8 @@ mod edge;
 mod edge_weighted_digraph;
 mod edge_weighted_graph;
 mod graph;
+mod symbol_digraph;
+mod symbol_graph;
 
 // Undirected graph traversal
 mod breadth_first_paths;
@@ -120,6 +122,8 @@ pub use edge::Edge;
 pub use edge_weighted_digraph::EdgeWeightedDigraph;
 pub use edge_weighted_graph::EdgeWeightedGraph;
 pub use graph::Graph;
+pub use symbol_digraph::SymbolDigraph;
+pub use symbol_graph::SymbolGraph;
 
 pub use breadth_first_paths::BreadthFirstPaths;
 pub use cc::CC;

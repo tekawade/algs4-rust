@@ -48,4 +48,5 @@ pub mod alphabet;
 pub mod compression;
 pub mod pattern_matching;
 pub mod regex;
+pub mod substring;
 pub mod suffix_array;

@@ -10,7 +10,7 @@ categories.workspace = true
 description = "String processing algorithms from Algorithms 4th Edition"
 
 [dependencies]
-algs4-fundamentals = { path = "../fundamentals" }
-algs4-searching = { path = "../searching" }
+algs4-fundamentals = { version = "0.1.0", path = "../fundamentals" }
+algs4-searching = { version = "0.1.0", path = "../searching" }
 
 [dev-dependencies]

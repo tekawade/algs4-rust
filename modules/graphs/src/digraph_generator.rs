@@ -6,6 +6,7 @@ use crate::digraph::Digraph;
 use rand::Rng;
 
 /// Utilities for generating random directed graphs.
+#[derive(Debug)]
 pub struct DigraphGenerator;
 
 impl DigraphGenerator {

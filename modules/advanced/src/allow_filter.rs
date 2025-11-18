@@ -1,8 +1,8 @@
-///! Allow filter application - prints words from stdin that are in the allowlist.
-///!
-///! Reads an allowlist of words from a file, then reads words from standard input
-///! and prints all those words that appear in the allowlist. Useful for demonstrating
-///! set data structures and membership testing.
+//! Allow filter application - prints words from stdin that are in the allowlist.
+//!
+//! Reads an allowlist of words from a file, then reads words from standard input
+//! and prints all those words that appear in the allowlist. Useful for demonstrating
+//! set data structures and membership testing.
 use std::collections::HashSet;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};

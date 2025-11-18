@@ -48,8 +48,11 @@ pub mod three_sum;
 pub mod three_sum_fast;
 
 // Applications and utilities
+/// Allow filter - prints words that are in an allowlist.
 pub mod allow_filter;
+/// Block filter - prints words that are NOT in a blocklist.
 pub mod block_filter;
+/// TopM - finds the M largest items from a stream.
 pub mod top_m;
 
 // Re-export main types for convenience

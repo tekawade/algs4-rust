@@ -16,7 +16,7 @@
 /// # Examples
 ///
 /// ```
-/// use searching::BTree;
+/// use algs4_searching::BTree;
 ///
 /// let mut bt = BTree::new();
 /// bt.put("apple", 1);
@@ -94,7 +94,7 @@ impl<K: Ord + Clone, V> BTree<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::BTree;
+    /// use algs4_searching::BTree;
     ///
     /// let bt: BTree<String, i32> = BTree::new();
     /// assert!(bt.is_empty());
@@ -112,7 +112,7 @@ impl<K: Ord + Clone, V> BTree<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::BTree;
+    /// use algs4_searching::BTree;
     ///
     /// let mut bt = BTree::new();
     /// assert_eq!(bt.size(), 0);
@@ -128,7 +128,7 @@ impl<K: Ord + Clone, V> BTree<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::BTree;
+    /// use algs4_searching::BTree;
     ///
     /// let mut bt = BTree::new();
     /// assert_eq!(bt.height(), 0);
@@ -147,7 +147,7 @@ impl<K: Ord + Clone, V> BTree<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::BTree;
+    /// use algs4_searching::BTree;
     ///
     /// let mut bt = BTree::new();
     /// assert!(bt.is_empty());
@@ -163,7 +163,7 @@ impl<K: Ord + Clone, V> BTree<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::BTree;
+    /// use algs4_searching::BTree;
     ///
     /// let mut bt = BTree::new();
     /// bt.put("key", 42);
@@ -202,7 +202,7 @@ impl<K: Ord + Clone, V> BTree<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::BTree;
+    /// use algs4_searching::BTree;
     ///
     /// let mut bt = BTree::new();
     /// bt.put("exists", 1);
@@ -219,7 +219,7 @@ impl<K: Ord + Clone, V> BTree<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::BTree;
+    /// use algs4_searching::BTree;
     ///
     /// let mut bt = BTree::new();
     /// bt.put("A", 1);
@@ -328,7 +328,7 @@ impl<K: Ord + Clone, V> BTree<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::BTree;
+    /// use algs4_searching::BTree;
     ///
     /// let mut bt = BTree::new();
     /// bt.put(3, "three");

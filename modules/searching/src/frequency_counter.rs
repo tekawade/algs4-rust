@@ -6,7 +6,7 @@
 /// # Examples
 ///
 /// ```
-/// use searching::frequency_counter::count_frequencies;
+/// use algs4_searching::frequency_counter::count_frequencies;
 ///
 /// let text = "the quick brown fox jumps over the lazy dog the fox";
 /// let words: Vec<&str> = text.split_whitespace().collect();
@@ -32,7 +32,7 @@ use std::fmt::{self, Display};
 /// # Examples
 ///
 /// ```
-/// use searching::frequency_counter::count_frequencies;
+/// use algs4_searching::frequency_counter::count_frequencies;
 ///
 /// let words = vec!["the", "quick", "brown", "fox", "the", "fox"];
 /// let freq = count_frequencies(&words, 3);
@@ -69,7 +69,7 @@ pub fn count_frequencies<S: AsRef<str>>(words: &[S], min_len: usize) -> HashMap<
 /// # Examples
 ///
 /// ```
-/// use searching::frequency_counter::most_frequent;
+/// use algs4_searching::frequency_counter::most_frequent;
 ///
 /// let words = vec!["the", "quick", "brown", "fox", "the", "fox", "the"];
 /// let result = most_frequent(&words, 2);
@@ -115,7 +115,7 @@ impl Display for FrequencyStats {
 /// # Examples
 ///
 /// ```
-/// use searching::frequency_counter::analyze_frequencies;
+/// use algs4_searching::frequency_counter::analyze_frequencies;
 ///
 /// let text = "the quick brown fox jumps over the lazy dog the fox";
 /// let words: Vec<&str> = text.split_whitespace().collect();
@@ -123,7 +123,7 @@ impl Display for FrequencyStats {
 ///
 /// assert_eq!(stats.most_frequent_word, "the");
 /// assert_eq!(stats.max_frequency, 3);
-/// assert_eq!(stats.distinct_words, 9);
+/// assert_eq!(stats.distinct_words, 8);
 /// assert_eq!(stats.total_words, 11);
 /// ```
 pub fn analyze_frequencies<S: AsRef<str>>(words: &[S], min_len: usize) -> Option<FrequencyStats> {

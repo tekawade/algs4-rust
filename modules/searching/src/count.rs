@@ -6,7 +6,7 @@
 /// # Examples
 ///
 /// ```
-/// use searching::count::count_key;
+/// use algs4_searching::count::count_key;
 ///
 /// let items = vec!["apple", "banana", "apple", "cherry", "apple"];
 /// let count = count_key(&items, &"apple");
@@ -30,7 +30,7 @@ use std::hash::Hash;
 /// # Examples
 ///
 /// ```
-/// use searching::count::count_key;
+/// use algs4_searching::count::count_key;
 ///
 /// let items = vec![1, 2, 3, 2, 4, 2, 5];
 /// assert_eq!(count_key(&items, &2), 3);
@@ -53,7 +53,7 @@ pub fn count_key<T: Eq>(items: &[T], key: &T) -> usize {
 /// # Examples
 ///
 /// ```
-/// use searching::count::count_all;
+/// use algs4_searching::count::count_all;
 ///
 /// let items = vec!["a", "b", "a", "c", "b", "a"];
 /// let counts = count_all(&items);
@@ -84,7 +84,7 @@ pub fn count_all<T: Eq + Hash + Clone>(items: &[T]) -> HashMap<T, usize> {
 /// # Examples
 ///
 /// ```
-/// use searching::count::count_keys;
+/// use algs4_searching::count::count_keys;
 ///
 /// let items = vec!["a", "b", "a", "c", "b", "a"];
 /// let keys = vec!["a", "b", "d"];
@@ -126,7 +126,7 @@ pub fn count_keys<T: Eq + Hash + Clone>(items: &[T], keys: &[T]) -> HashMap<T, u
 /// # Examples
 ///
 /// ```
-/// use searching::count::most_common;
+/// use algs4_searching::count::most_common;
 ///
 /// let items = vec![1, 2, 3, 2, 4, 2, 5];
 /// assert_eq!(most_common(&items), Some((2, 3)));
@@ -150,7 +150,7 @@ pub fn most_common<T: Eq + Hash + Clone>(items: &[T]) -> Option<(T, usize)> {
 /// # Examples
 ///
 /// ```
-/// use searching::count::least_common;
+/// use algs4_searching::count::least_common;
 ///
 /// let items = vec![1, 2, 3, 2, 4, 2, 5];
 /// let result = least_common(&items);

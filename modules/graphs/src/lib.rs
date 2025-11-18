@@ -52,11 +52,13 @@
 
 // Graph data structures
 mod digraph;
+mod digraph_generator;
 mod directed_edge;
 mod edge;
 mod edge_weighted_digraph;
 mod edge_weighted_graph;
 mod graph;
+mod graph_generator;
 mod symbol_digraph;
 mod symbol_graph;
 
@@ -117,11 +119,13 @@ mod ford_fulkerson;
 
 // Public exports
 pub use digraph::Digraph;
+pub use digraph_generator::DigraphGenerator;
 pub use directed_edge::DirectedEdge;
 pub use edge::Edge;
 pub use edge_weighted_digraph::EdgeWeightedDigraph;
 pub use edge_weighted_graph::EdgeWeightedGraph;
 pub use graph::Graph;
+pub use graph_generator::GraphGenerator;
 pub use symbol_digraph::SymbolDigraph;
 pub use symbol_graph::SymbolGraph;
 

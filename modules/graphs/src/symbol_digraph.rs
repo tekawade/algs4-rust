@@ -15,7 +15,7 @@ use std::io::{self, BufRead, BufReader};
 /// # Examples
 ///
 /// ```
-/// use algs4_graphs::symbol_digraph::SymbolDigraph;
+/// use algs4_graphs::SymbolDigraph;
 ///
 /// // Create from manually added edges
 /// let mut sg = SymbolDigraph::new();
@@ -43,7 +43,7 @@ impl SymbolDigraph {
     /// # Examples
     ///
     /// ```
-    /// use algs4_graphs::symbol_digraph::SymbolDigraph;
+    /// use algs4_graphs::SymbolDigraph;
     ///
     /// let sg = SymbolDigraph::new();
     /// assert_eq!(sg.num_vertices(), 0);
@@ -73,7 +73,7 @@ impl SymbolDigraph {
     /// # Examples
     ///
     /// ```no_run
-    /// use algs4_graphs::symbol_digraph::SymbolDigraph;
+    /// use algs4_graphs::SymbolDigraph;
     ///
     /// let sg = SymbolDigraph::from_file("links.txt", " ")?;
     /// # Ok::<(), std::io::Error>(())
@@ -128,7 +128,7 @@ impl SymbolDigraph {
     /// # Examples
     ///
     /// ```
-    /// use algs4_graphs::symbol_digraph::SymbolDigraph;
+    /// use algs4_graphs::SymbolDigraph;
     ///
     /// let mut sg = SymbolDigraph::new();
     /// let idx1 = sg.add_vertex("A".to_string());
@@ -162,7 +162,7 @@ impl SymbolDigraph {
     /// # Examples
     ///
     /// ```
-    /// use algs4_graphs::symbol_digraph::SymbolDigraph;
+    /// use algs4_graphs::SymbolDigraph;
     ///
     /// let mut sg = SymbolDigraph::new();
     /// sg.add_vertex("A".to_string());
@@ -180,7 +180,7 @@ impl SymbolDigraph {
     /// # Examples
     ///
     /// ```
-    /// use algs4_graphs::symbol_digraph::SymbolDigraph;
+    /// use algs4_graphs::SymbolDigraph;
     ///
     /// let mut sg = SymbolDigraph::new();
     /// sg.add_vertex("A".to_string());

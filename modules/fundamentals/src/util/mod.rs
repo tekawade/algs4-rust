@@ -6,7 +6,9 @@
 mod accumulator;
 mod counter;
 mod stopwatch;
+mod transaction;
 
 pub use accumulator::Accumulator;
 pub use counter::Counter;
 pub use stopwatch::Stopwatch;
+pub use transaction::Transaction;

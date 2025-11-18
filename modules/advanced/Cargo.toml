@@ -10,8 +10,8 @@ categories.workspace = true
 description = "Advanced algorithms from Algorithms 4th Edition"
 
 [dependencies]
-algs4-fundamentals = { path = "../fundamentals" }
-algs4-searching = { path = "../searching" }
-algs4-graphs = { path = "../graphs" }
+algs4-fundamentals = { version = "0.1.0", path = "../fundamentals" }
+algs4-searching = { version = "0.1.0", path = "../searching" }
+algs4-graphs = { version = "0.1.0", path = "../graphs" }
 
 [dev-dependencies]

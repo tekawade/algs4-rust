@@ -1,7 +1,7 @@
-///! Symbol digraph - directed graph with string vertex names.
-///!
-///! Provides a wrapper around the Digraph data type that allows vertices to be
-///! identified by arbitrary strings rather than integers.
+//! Symbol digraph - directed graph with string vertex names.
+//!
+//! Provides a wrapper around the Digraph data type that allows vertices to be
+//! identified by arbitrary strings rather than integers.
 use crate::digraph::Digraph;
 use std::collections::HashMap;
 use std::fs::File;

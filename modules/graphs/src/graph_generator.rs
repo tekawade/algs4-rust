@@ -6,6 +6,7 @@ use crate::graph::Graph;
 use rand::Rng;
 
 /// Utilities for generating random undirected graphs.
+#[derive(Debug)]
 pub struct GraphGenerator;
 
 impl GraphGenerator {
@@ -369,7 +370,7 @@ impl GraphGenerator {
     /// }
     /// ```
     pub fn regular(v: usize, k: usize) -> Graph {
-        if v * k % 2 != 0 {
+        if !(v * k).is_multiple_of(2) {
             panic!("v * k must be even");
         }
         if k >= v {

@@ -1,7 +1,7 @@
-///! Longest common substring using suffix arrays.
-///!
-///! Computes the longest substring that appears in two given strings
-///! using suffix array data structure.
+//! Longest common substring using suffix arrays.
+//!
+//! Computes the longest substring that appears in two given strings
+//! using suffix array data structure.
 use crate::suffix_array::suffix_array::SuffixArray;
 
 /// Finds the longest common substring between two strings.

@@ -1,9 +1,8 @@
-///! TopM - Find the M largest items from a stream.
-///!
-///! Reads a sequence of transactions from standard input and prints the M largest ones
-///! to standard output. Uses a minimum priority queue of size at most M+1 to identify
-///! the M largest transactions efficiently.
-use std::fmt::Display;
+//! Provides a `TopM` data structure to find the M largest items from a stream.
+//!
+//! It uses a min-priority queue to efficiently keep track of the M largest items
+//! seen so far. This can be used to build an application that reads items from
+//! standard input (like a sequence of transactions) and prints the top M.
 
 /// Finds the top M items from a stream using a min priority queue.
 ///

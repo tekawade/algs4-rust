@@ -1,8 +1,8 @@
-///! Block filter application - prints words from stdin that are NOT in the blocklist.
-///!
-///! Reads a blocklist of words from a file, then reads words from standard input
-///! and prints all those words that do NOT appear in the blocklist. Useful for
-///! filtering out common words or spam.
+//! Provides a `BlockFilter` to filter words against a blocklist.
+//!
+//! The `BlockFilter` struct can be used to build an application that reads words
+//! from standard input and prints only those that do not appear in the blocklist,
+//! which is useful for filtering out common words or spam.
 use std::collections::HashSet;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};

@@ -1,7 +1,7 @@
-///! Transaction data type for commercial transactions.
-///!
-///! An immutable data type representing a commercial transaction
-///! with a customer name, date, and amount.
+//! Transaction data type for commercial transactions.
+//!
+//! An immutable data type representing a commercial transaction
+//! with a customer name, date, and amount.
 use std::cmp::Ordering;
 use std::fmt;
 use std::hash::{Hash, Hasher};

@@ -1,7 +1,7 @@
-///! Longest repeated substring using suffix arrays.
-///!
-///! Computes the longest substring that appears at least twice in a given string
-///! using the suffix array data structure and LCP (longest common prefix) array.
+//! Longest repeated substring using suffix arrays.
+//!
+//! Computes the longest substring that appears at least twice in a given string
+//! using the suffix array data structure and LCP (longest common prefix) array.
 use crate::suffix_array::suffix_array::SuffixArray;
 
 /// Finds the longest repeated substring.

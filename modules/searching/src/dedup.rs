@@ -6,7 +6,7 @@
 /// # Examples
 ///
 /// ```
-/// use searching::dedup::remove_duplicates;
+/// use algs4_searching::dedup::remove_duplicates;
 ///
 /// let items = vec!["apple", "banana", "apple", "cherry", "banana"];
 /// let unique = remove_duplicates(&items);
@@ -32,7 +32,7 @@ use std::hash::Hash;
 /// # Examples
 ///
 /// ```
-/// use searching::dedup::remove_duplicates;
+/// use algs4_searching::dedup::remove_duplicates;
 ///
 /// let items = vec![1, 2, 3, 2, 4, 1, 5];
 /// let unique = remove_duplicates(&items);
@@ -65,7 +65,7 @@ pub fn remove_duplicates<T: Eq + Hash + Clone>(items: &[T]) -> Vec<T> {
 /// # Examples
 ///
 /// ```
-/// use searching::dedup::unique_set;
+/// use algs4_searching::dedup::unique_set;
 ///
 /// let items = vec!["a", "b", "a", "c", "b"];
 /// let unique = unique_set(&items);
@@ -92,7 +92,7 @@ pub fn unique_set<T: Eq + Hash + Clone>(items: &[T]) -> HashSet<T> {
 /// # Examples
 ///
 /// ```
-/// use searching::dedup::count_duplicates;
+/// use algs4_searching::dedup::count_duplicates;
 ///
 /// let items = vec!["a", "b", "a", "c", "a", "b"];
 /// let dups = count_duplicates(&items);
@@ -128,7 +128,7 @@ pub fn count_duplicates<T: Eq + Hash + Clone>(items: &[T]) -> Vec<(T, usize)> {
 /// # Examples
 ///
 /// ```
-/// use searching::dedup::find_duplicates;
+/// use algs4_searching::dedup::find_duplicates;
 ///
 /// let items = vec![1, 2, 3, 2, 4, 3, 5];
 /// let dups = find_duplicates(&items);

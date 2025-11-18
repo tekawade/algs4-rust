@@ -6,15 +6,15 @@
 /// # Examples
 ///
 /// ```
-/// use searching::lookup_index::LookupIndex;
+/// use algs4_searching::lookup_index::LookupIndex;
 ///
 /// let mut index = LookupIndex::new();
 /// index.add("movies.txt", "Toy Story");
 /// index.add("movies.txt", "Finding Nemo");
 /// index.add("actors.txt", "Tom Hanks");
 ///
-/// let keys = index.get_keys("Toy Story");
-/// assert!(keys.contains(&"movies.txt"));
+/// let keys = index.get_keys(&"Toy Story");
+/// assert!(keys.contains(&&"movies.txt"));
 /// ```
 use std::collections::{HashMap, HashSet};
 
@@ -35,7 +35,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let index: LookupIndex<String, String> = LookupIndex::new();
     /// assert!(index.is_empty());
@@ -57,12 +57,12 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let mut index = LookupIndex::new();
     /// index.add("key1", "value1");
-    /// assert!(index.contains_key("key1"));
-    /// assert!(index.contains_value("value1"));
+    /// assert!(index.contains_key(&"key1"));
+    /// assert!(index.contains_value(&"value1"));
     /// ```
     pub fn add(&mut self, key: K, value: V) {
         self.forward
@@ -86,13 +86,13 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let mut index = LookupIndex::new();
     /// index.add("key1", "value1");
     /// index.add("key1", "value2");
     ///
-    /// let values = index.get_values("key1");
+    /// let values = index.get_values(&"key1");
     /// assert_eq!(values.len(), 2);
     /// ```
     pub fn get_values(&self, key: &K) -> Vec<&V> {
@@ -115,13 +115,13 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let mut index = LookupIndex::new();
     /// index.add("key1", "value1");
     /// index.add("key2", "value1");
     ///
-    /// let keys = index.get_keys("value1");
+    /// let keys = index.get_keys(&"value1");
     /// assert_eq!(keys.len(), 2);
     /// ```
     pub fn get_keys(&self, value: &V) -> Vec<&K> {
@@ -136,13 +136,13 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let mut index = LookupIndex::new();
     /// index.add("exists", "value");
     ///
-    /// assert!(index.contains_key("exists"));
-    /// assert!(!index.contains_key("missing"));
+    /// assert!(index.contains_key(&"exists"));
+    /// assert!(!index.contains_key(&"missing"));
     /// ```
     pub fn contains_key(&self, key: &K) -> bool {
         self.forward.contains_key(key)
@@ -153,13 +153,13 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let mut index = LookupIndex::new();
     /// index.add("key", "exists");
     ///
-    /// assert!(index.contains_value("exists"));
-    /// assert!(!index.contains_value("missing"));
+    /// assert!(index.contains_value(&"exists"));
+    /// assert!(!index.contains_value(&"missing"));
     /// ```
     pub fn contains_value(&self, value: &V) -> bool {
         self.reverse.contains_key(value)
@@ -170,7 +170,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let mut index = LookupIndex::new();
     /// index.add("key1", "value1");
@@ -187,7 +187,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let mut index = LookupIndex::new();
     /// index.add("key1", "value1");
@@ -204,7 +204,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let index: LookupIndex<String, String> = LookupIndex::new();
     /// assert!(index.is_empty());
@@ -218,7 +218,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let mut index = LookupIndex::new();
     /// index.add("key1", "value1");
@@ -236,7 +236,7 @@ where
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_index::LookupIndex;
+    /// use algs4_searching::lookup_index::LookupIndex;
     ///
     /// let mut index = LookupIndex::new();
     /// index.add("key1", "value1");

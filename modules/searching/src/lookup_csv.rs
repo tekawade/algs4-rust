@@ -6,14 +6,14 @@
 /// # Examples
 ///
 /// ```
-/// use searching::lookup_csv::LookupCSV;
+/// use algs4_searching::lookup_csv::LookupCSV;
 ///
 /// let mut lookup = LookupCSV::new(',');
 /// lookup.add_row(vec!["apple", "fruit", "red"]);
 /// lookup.add_row(vec!["carrot", "vegetable", "orange"]);
 ///
-/// let value = lookup.get(0, "apple");
-/// assert_eq!(value, Some(&"fruit"));
+/// let value = lookup.get(1, "apple");
+/// assert_eq!(value, Some(&"fruit".to_string()));
 /// ```
 use std::collections::HashMap;
 use std::fmt::{self, Display};
@@ -36,7 +36,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let lookup = LookupCSV::new(',');
     /// assert!(lookup.is_empty());
@@ -58,7 +58,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let mut lookup = LookupCSV::new(',');
     /// lookup.set_key_column(1); // Use second column as key
@@ -76,7 +76,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let mut lookup = LookupCSV::new(',');
     /// lookup.add_row(vec!["key1", "value1", "value2"]);
@@ -101,7 +101,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let mut lookup = LookupCSV::new(',');
     /// lookup.add_line("apple,fruit,red");
@@ -126,7 +126,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let mut lookup = LookupCSV::new(',');
     /// lookup.add_row(vec!["apple", "fruit", "red"]);
@@ -152,7 +152,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let mut lookup = LookupCSV::new(',');
     /// lookup.add_row(vec!["apple", "fruit", "red"]);
@@ -169,7 +169,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let mut lookup = LookupCSV::new(',');
     /// lookup.add_row(vec!["apple", "fruit"]);
@@ -186,7 +186,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let mut lookup = LookupCSV::new(',');
     /// lookup.add_row(vec!["key1", "val1"]);
@@ -203,7 +203,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let lookup = LookupCSV::new(',');
     /// assert!(lookup.is_empty());
@@ -217,7 +217,7 @@ impl LookupCSV {
     /// # Examples
     ///
     /// ```
-    /// use searching::lookup_csv::LookupCSV;
+    /// use algs4_searching::lookup_csv::LookupCSV;
     ///
     /// let mut lookup = LookupCSV::new(',');
     /// lookup.add_row(vec!["apple", "fruit"]);

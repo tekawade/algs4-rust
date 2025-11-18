@@ -16,7 +16,7 @@
 /// # Examples
 ///
 /// ```
-/// use searching::AVLTreeST;
+/// use algs4_searching::AVLTreeST;
 ///
 /// let mut st = AVLTreeST::new();
 /// st.put("apple", 1);
@@ -87,7 +87,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let st: AVLTreeST<String, i32> = AVLTreeST::new();
     /// assert!(st.is_empty());
@@ -101,7 +101,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// assert_eq!(st.size(), 0);
@@ -117,7 +117,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// assert_eq!(st.height(), -1);
@@ -133,7 +133,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// assert!(st.is_empty());
@@ -149,7 +149,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put("key", 42);
@@ -173,7 +173,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put("exists", 1);
@@ -190,7 +190,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put("A", 1);
@@ -226,7 +226,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put("A", 1);
@@ -281,7 +281,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put(3, "three");
@@ -315,7 +315,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put(1, "one");
@@ -349,7 +349,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put(3, "three");
@@ -373,7 +373,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put(1, "one");
@@ -397,7 +397,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put(1, "one");
@@ -424,7 +424,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put(1, "one");
@@ -451,7 +451,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put(3, "three");
@@ -484,7 +484,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put(1, "one");
@@ -510,13 +510,13 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// st.put(3, "three");
     /// st.put(1, "one");
     /// st.put(2, "two");
-    /// let keys: Vec<_> = st.keys().collect();
+    /// let keys = st.keys();
     /// assert_eq!(keys, vec![&1, &2, &3]);
     /// ```
     pub fn keys(&self) -> Vec<&K> {
@@ -533,7 +533,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// for i in 1..=10 {
@@ -567,7 +567,7 @@ impl<K: Ord + Clone, V: Clone> AVLTreeST<K, V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::AVLTreeST;
+    /// use algs4_searching::AVLTreeST;
     ///
     /// let mut st = AVLTreeST::new();
     /// for i in 1..=10 {

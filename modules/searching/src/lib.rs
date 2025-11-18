@@ -13,7 +13,7 @@
 //! ## Example
 //!
 //! ```
-//! use searching::{RedBlackBST, AVLTreeST};
+//! use algs4_searching::{RedBlackBST, AVLTreeST};
 //!
 //! let mut rb = RedBlackBST::new();
 //! rb.put("hello", 42);

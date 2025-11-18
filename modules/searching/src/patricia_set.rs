@@ -18,7 +18,7 @@
 /// # Examples
 ///
 /// ```
-/// use searching::PatriciaSET;
+/// use algs4_searching::PatriciaSET;
 ///
 /// let mut set = PatriciaSET::new();
 /// set.add("apple");
@@ -45,7 +45,7 @@ impl PatriciaSET {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaSET;
+    /// use algs4_searching::PatriciaSET;
     ///
     /// let set = PatriciaSET::new();
     /// assert!(set.is_empty());
@@ -61,7 +61,7 @@ impl PatriciaSET {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaSET;
+    /// use algs4_searching::PatriciaSET;
     ///
     /// let mut set = PatriciaSET::new();
     /// assert_eq!(set.size(), 0);
@@ -77,7 +77,7 @@ impl PatriciaSET {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaSET;
+    /// use algs4_searching::PatriciaSET;
     ///
     /// let mut set = PatriciaSET::new();
     /// assert!(set.is_empty());
@@ -97,7 +97,7 @@ impl PatriciaSET {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaSET;
+    /// use algs4_searching::PatriciaSET;
     ///
     /// let mut set = PatriciaSET::new();
     /// set.add("hello");
@@ -115,7 +115,7 @@ impl PatriciaSET {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaSET;
+    /// use algs4_searching::PatriciaSET;
     ///
     /// let mut set = PatriciaSET::new();
     /// set.add("exists");
@@ -134,7 +134,7 @@ impl PatriciaSET {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaSET;
+    /// use algs4_searching::PatriciaSET;
     ///
     /// let mut set = PatriciaSET::new();
     /// set.add("key");
@@ -153,7 +153,7 @@ impl PatriciaSET {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaSET;
+    /// use algs4_searching::PatriciaSET;
     ///
     /// let mut set = PatriciaSET::new();
     /// set.add("apple");

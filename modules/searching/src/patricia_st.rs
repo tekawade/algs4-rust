@@ -18,7 +18,7 @@
 /// # Examples
 ///
 /// ```
-/// use searching::PatriciaST;
+/// use algs4_searching::PatriciaST;
 ///
 /// let mut st = PatriciaST::new();
 /// st.put("apple", 1);
@@ -45,7 +45,7 @@ impl<V> PatriciaST<V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaST;
+    /// use algs4_searching::PatriciaST;
     ///
     /// let st: PatriciaST<i32> = PatriciaST::new();
     /// assert!(st.is_empty());
@@ -61,7 +61,7 @@ impl<V> PatriciaST<V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaST;
+    /// use algs4_searching::PatriciaST;
     ///
     /// let mut st = PatriciaST::new();
     /// assert_eq!(st.size(), 0);
@@ -77,7 +77,7 @@ impl<V> PatriciaST<V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaST;
+    /// use algs4_searching::PatriciaST;
     ///
     /// let mut st = PatriciaST::new();
     /// assert!(st.is_empty());
@@ -98,7 +98,7 @@ impl<V> PatriciaST<V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaST;
+    /// use algs4_searching::PatriciaST;
     ///
     /// let mut st = PatriciaST::new();
     /// st.put("hello", 42);
@@ -118,7 +118,7 @@ impl<V> PatriciaST<V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaST;
+    /// use algs4_searching::PatriciaST;
     ///
     /// let mut st = PatriciaST::new();
     /// st.put("key", 42);
@@ -137,7 +137,7 @@ impl<V> PatriciaST<V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaST;
+    /// use algs4_searching::PatriciaST;
     ///
     /// let mut st = PatriciaST::new();
     /// st.put("exists", 1);
@@ -153,7 +153,7 @@ impl<V> PatriciaST<V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaST;
+    /// use algs4_searching::PatriciaST;
     ///
     /// let mut st = PatriciaST::new();
     /// st.put("key", 42);
@@ -172,7 +172,7 @@ impl<V> PatriciaST<V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaST;
+    /// use algs4_searching::PatriciaST;
     ///
     /// let mut st = PatriciaST::new();
     /// st.put("apple", 1);
@@ -189,7 +189,7 @@ impl<V> PatriciaST<V> {
     /// # Examples
     ///
     /// ```
-    /// use searching::PatriciaST;
+    /// use algs4_searching::PatriciaST;
     ///
     /// let mut st = PatriciaST::new();
     /// st.put("apple", 1);

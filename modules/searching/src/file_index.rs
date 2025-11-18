@@ -6,14 +6,14 @@
 /// # Examples
 ///
 /// ```
-/// use searching::file_index::FileIndex;
+/// use algs4_searching::file_index::FileIndex;
 ///
 /// let mut index = FileIndex::new();
 /// index.add_entry("apple", "file1.txt");
 /// index.add_entry("banana", "file2.txt");
 /// index.add_entry("apple", "file3.txt");
 ///
-/// let files = index.get("apple");
+/// let files = index.get(&"apple");
 /// assert_eq!(files.len(), 2);
 /// ```
 use std::collections::{HashMap, HashSet};
@@ -30,7 +30,7 @@ impl<K: Eq + std::hash::Hash + Clone, F: Eq + std::hash::Hash + Clone> FileIndex
     /// # Examples
     ///
     /// ```
-    /// use searching::file_index::FileIndex;
+    /// use algs4_searching::file_index::FileIndex;
     ///
     /// let index: FileIndex<String, String> = FileIndex::new();
     /// assert!(index.is_empty());
@@ -51,11 +51,11 @@ impl<K: Eq + std::hash::Hash + Clone, F: Eq + std::hash::Hash + Clone> FileIndex
     /// # Examples
     ///
     /// ```
-    /// use searching::file_index::FileIndex;
+    /// use algs4_searching::file_index::FileIndex;
     ///
     /// let mut index = FileIndex::new();
     /// index.add_entry("term", "document1.txt");
-    /// assert!(index.contains("term"));
+    /// assert!(index.contains(&"term"));
     /// ```
     pub fn add_entry(&mut self, key: K, file: F) {
         self.index.entry(key).or_default().insert(file);
@@ -74,13 +74,13 @@ impl<K: Eq + std::hash::Hash + Clone, F: Eq + std::hash::Hash + Clone> FileIndex
     /// # Examples
     ///
     /// ```
-    /// use searching::file_index::FileIndex;
+    /// use algs4_searching::file_index::FileIndex;
     ///
     /// let mut index = FileIndex::new();
     /// index.add_entry("apple", "file1.txt");
     /// index.add_entry("apple", "file2.txt");
     ///
-    /// let files = index.get("apple");
+    /// let files = index.get(&"apple");
     /// assert_eq!(files.len(), 2);
     /// ```
     pub fn get(&self, key: &K) -> Vec<&F> {
@@ -95,13 +95,13 @@ impl<K: Eq + std::hash::Hash + Clone, F: Eq + std::hash::Hash + Clone> FileIndex
     /// # Examples
     ///
     /// ```
-    /// use searching::file_index::FileIndex;
+    /// use algs4_searching::file_index::FileIndex;
     ///
     /// let mut index = FileIndex::new();
     /// index.add_entry("exists", "file.txt");
     ///
-    /// assert!(index.contains("exists"));
-    /// assert!(!index.contains("missing"));
+    /// assert!(index.contains(&"exists"));
+    /// assert!(!index.contains(&"missing"));
     /// ```
     pub fn contains(&self, key: &K) -> bool {
         self.index.contains_key(key)
@@ -112,7 +112,7 @@ impl<K: Eq + std::hash::Hash + Clone, F: Eq + std::hash::Hash + Clone> FileIndex
     /// # Examples
     ///
     /// ```
-    /// use searching::file_index::FileIndex;
+    /// use algs4_searching::file_index::FileIndex;
     ///
     /// let mut index = FileIndex::new();
     /// index.add_entry("key1", "file1.txt");
@@ -129,7 +129,7 @@ impl<K: Eq + std::hash::Hash + Clone, F: Eq + std::hash::Hash + Clone> FileIndex
     /// # Examples
     ///
     /// ```
-    /// use searching::file_index::FileIndex;
+    /// use algs4_searching::file_index::FileIndex;
     ///
     /// let index: FileIndex<String, String> = FileIndex::new();
     /// assert!(index.is_empty());
@@ -143,7 +143,7 @@ impl<K: Eq + std::hash::Hash + Clone, F: Eq + std::hash::Hash + Clone> FileIndex
     /// # Examples
     ///
     /// ```
-    /// use searching::file_index::FileIndex;
+    /// use algs4_searching::file_index::FileIndex;
     ///
     /// let mut index = FileIndex::new();
     /// index.add_entry("apple", "file1.txt");
@@ -161,14 +161,14 @@ impl<K: Eq + std::hash::Hash + Clone, F: Eq + std::hash::Hash + Clone> FileIndex
     /// # Examples
     ///
     /// ```
-    /// use searching::file_index::FileIndex;
+    /// use algs4_searching::file_index::FileIndex;
     ///
     /// let mut index = FileIndex::new();
     /// index.add_entry("apple", "file1.txt");
     /// index.add_entry("apple", "file2.txt");
     /// index.add_entry("apple", "file3.txt");
     ///
-    /// assert_eq!(index.file_count("apple"), 3);
+    /// assert_eq!(index.file_count(&"apple"), 3);
     /// ```
     pub fn file_count(&self, key: &K) -> usize {
         self.index.get(key).map(|set| set.len()).unwrap_or(0)

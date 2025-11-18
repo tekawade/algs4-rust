@@ -7,7 +7,7 @@
 /// # Examples
 ///
 /// ```
-/// use searching::kwik::KWIK;
+/// use algs4_searching::kwik::KWIK;
 ///
 /// let text = "the quick brown fox jumps over the lazy dog";
 /// let kwik = KWIK::new(text, 5);
@@ -47,7 +47,7 @@ impl KWIK {
     /// # Examples
     ///
     /// ```
-    /// use searching::kwik::KWIK;
+    /// use algs4_searching::kwik::KWIK;
     ///
     /// let text = "the quick brown fox";
     /// let kwik = KWIK::new(text, 2);
@@ -93,7 +93,7 @@ impl KWIK {
     /// # Examples
     ///
     /// ```
-    /// use searching::kwik::KWIK;
+    /// use algs4_searching::kwik::KWIK;
     ///
     /// let text = "the quick brown fox jumps over the lazy dog";
     /// let kwik = KWIK::new(text, 3);
@@ -114,7 +114,7 @@ impl KWIK {
     /// # Examples
     ///
     /// ```
-    /// use searching::kwik::KWIK;
+    /// use algs4_searching::kwik::KWIK;
     ///
     /// let text = "the quick brown fox jumps over the lazy dog";
     /// let kwik = KWIK::new(text, 2);
@@ -133,7 +133,7 @@ impl KWIK {
     /// # Examples
     ///
     /// ```
-    /// use searching::kwik::KWIK;
+    /// use algs4_searching::kwik::KWIK;
     ///
     /// let text = "the quick brown fox";
     /// let kwik = KWIK::new(text, 2);
@@ -151,7 +151,7 @@ impl KWIK {
     /// # Examples
     ///
     /// ```
-    /// use searching::kwik::KWIK;
+    /// use algs4_searching::kwik::KWIK;
     ///
     /// let text = "the quick brown fox";
     /// let kwik = KWIK::new(text, 2);
@@ -168,7 +168,7 @@ impl KWIK {
     /// # Examples
     ///
     /// ```
-    /// use searching::kwik::KWIK;
+    /// use algs4_searching::kwik::KWIK;
     ///
     /// let text = "the quick brown fox jumps over the lazy dog";
     /// let kwik = KWIK::new(text, 2);
@@ -184,7 +184,7 @@ impl KWIK {
     /// # Examples
     ///
     /// ```
-    /// use searching::kwik::KWIK;
+    /// use algs4_searching::kwik::KWIK;
     ///
     /// let kwik = KWIK::new("", 2);
     /// assert!(kwik.is_empty());
@@ -200,7 +200,7 @@ impl Context {
     /// # Examples
     ///
     /// ```
-    /// use searching::kwik::{KWIK, Context};
+    /// use algs4_searching::kwik::{KWIK, Context};
     ///
     /// let context = Context {
     ///     before: "the quick".to_string(),
@@ -221,7 +221,7 @@ impl Context {
     /// # Examples
     ///
     /// ```
-    /// use searching::kwik::Context;
+    /// use algs4_searching::kwik::Context;
     ///
     /// let context = Context {
     ///     before: "hello".to_string(),

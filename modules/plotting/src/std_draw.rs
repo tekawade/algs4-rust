@@ -95,7 +95,7 @@ impl GlobalState {
 static STATE: LazyLock<Mutex<GlobalState>> = LazyLock::new(|| Mutex::new(GlobalState::new()));
 
 thread_local! {
-    static WINDOW: RefCell<Option<Window>> = RefCell::new(None);
+    static WINDOW: RefCell<Option<Window>> = const { RefCell::new(None) };
 }
 
 // Helper to convert u32 RGB to Color
@@ -171,8 +171,10 @@ pub fn line(x0: f64, y0: f64, x1: f64, y1: f64) {
     // Calculate stroke width based on pen radius and coordinate scale
     let stroke_width = state.pen_radius * state.factor_x() * DIAMETER_SCALE;
 
-    let mut stroke = Stroke::default();
-    stroke.width = stroke_width.max(1.0);
+    let stroke = Stroke {
+        width: stroke_width.max(1.0),
+        ..Default::default()
+    };
 
     state
         .pixmap
@@ -225,8 +227,10 @@ pub fn circle(x: f64, y: f64, r: f64) {
 
     // Stroke width for circle outline is based on pen radius (fraction of canvas)
     let stroke_width = state.pen_radius * state.width as f32 * DIAMETER_SCALE;
-    let mut stroke = Stroke::default();
-    stroke.width = stroke_width.max(1.0);
+    let stroke = Stroke {
+        width: stroke_width.max(1.0),
+        ..Default::default()
+    };
 
     state
         .pixmap
@@ -275,8 +279,10 @@ pub fn rectangle(x: f64, y: f64, half_width: f64, half_height: f64) {
     paint.anti_alias = true;
 
     let stroke_width = state.pen_radius * state.width as f32 * DIAMETER_SCALE;
-    let mut stroke = Stroke::default();
-    stroke.width = stroke_width.max(1.0);
+    let stroke = Stroke {
+        width: stroke_width.max(1.0),
+        ..Default::default()
+    };
 
     state
         .pixmap

@@ -12,4 +12,3 @@ description = "Plotting and visualization library for Algorithms 4th Edition"
 [dependencies]
 minifb = "0.24"
 tiny-skia = "0.11"
-lazy_static = "1.4"

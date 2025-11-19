@@ -2,7 +2,7 @@ use algs4_plotting::*;
 
 fn main() {
     // Set canvas size
-    set_canvas_size(800, 400);
+    set_canvas_size(800, 400).unwrap();
 
     // Set coordinate scale
     set_x_scale(0.0, std::f64::consts::PI * 4.0);
@@ -27,15 +27,15 @@ fn main() {
 
     // Plot cosine wave
     set_pen_color(RED);
-    let mut x = 0.0;
+    x = 0.0; // Reuse x
     while x < std::f64::consts::PI * 4.0 {
         point(x, x.cos());
         x += dx;
     }
 
     // Show and wait
-    println!("Close the window to exit.");
-    loop {
+    println!("Press Escape to exit.");
+    while is_open() && !is_key_down(Key::Escape) {
         show(100);
     }
 }

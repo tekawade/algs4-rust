@@ -1,7 +1,7 @@
 use algs4_plotting::*;
 
 fn main() {
-    set_canvas_size(600, 600);
+    set_canvas_size(600, 600).unwrap();
     set_x_scale(-1.0, 1.0);
     set_y_scale(-1.0, 1.0);
 
@@ -11,13 +11,12 @@ fn main() {
     let mut vy: f64 = 0.023;
     let radius: f64 = 0.05;
 
-    println!("Press Ctrl+C to exit if window doesn't close.");
+    println!("Press Escape to exit.");
 
     // Enable double buffering for smooth animation
-    // Note: We haven't exposed enable_double_buffering in lib.rs yet, need to fix that.
-    // For now, show(t) does update.
+    enable_double_buffering();
 
-    loop {
+    while is_open() && !is_key_down(Key::Escape) {
         // Update position
         if rx.abs() + radius > 1.0 {
             vx = -vx;
@@ -29,7 +28,7 @@ fn main() {
         ry += vy;
 
         // Clear background
-        clear(WHITE); // Grayish
+        clear(WHITE); // White
 
         // Draw ball
         set_pen_color(BLACK);

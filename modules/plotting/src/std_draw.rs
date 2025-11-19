@@ -1,12 +1,12 @@
-use lazy_static::lazy_static;
 use minifb::{Key, Window, WindowOptions};
-use std::sync::Mutex;
+use std::cell::RefCell;
+use std::sync::{LazyLock, Mutex};
 use tiny_skia::{Color, Paint, PathBuilder, Pixmap, Stroke, Transform};
 
 // Default settings
 const DEFAULT_SIZE: usize = 512;
-const DEFAULT_PEN_RADIUS: f32 = 0.002; // Scaled relative to canvas size usually, but here absolute for now? No, StdDraw is relative.
-                                       // StdDraw default pen radius is 0.002.
+const DEFAULT_PEN_RADIUS: f32 = 0.002; // Default pen radius is 0.002, matching StdDraw. This value is interpreted as a fraction of the canvas width (i.e., relative to canvas size).
+const DIAMETER_SCALE: f32 = 2.0;
 
 // Colors
 pub const BLACK: u32 = 0x000000;
@@ -18,13 +18,7 @@ pub const CYAN: u32 = 0x00FFFF;
 pub const MAGENTA: u32 = 0xFF00FF;
 pub const YELLOW: u32 = 0xFFFF00;
 
-struct ThreadSafeWindow(Window);
-
-unsafe impl Send for ThreadSafeWindow {}
-unsafe impl Sync for ThreadSafeWindow {}
-
 struct GlobalState {
-    window: Option<ThreadSafeWindow>,
     pixmap: Pixmap,
     width: usize,
     height: usize,
@@ -35,17 +29,18 @@ struct GlobalState {
     pen_color: Color,
     pen_radius: f32,
     defer_update: bool,
+    buffer: Vec<u32>, // Reusable buffer for rendering
 }
 
 impl GlobalState {
     fn new() -> Self {
         let width = DEFAULT_SIZE;
         let height = DEFAULT_SIZE;
-        let mut pixmap = Pixmap::new(width as u32, height as u32).unwrap();
+        let mut pixmap =
+            Pixmap::new(width as u32, height as u32).expect("Failed to create initial pixmap");
         pixmap.fill(Color::WHITE);
 
         GlobalState {
-            window: None,
             pixmap,
             width,
             height,
@@ -56,20 +51,7 @@ impl GlobalState {
             pen_color: Color::BLACK,
             pen_radius: DEFAULT_PEN_RADIUS,
             defer_update: false,
-        }
-    }
-
-    fn init_window(&mut self) {
-        if self.window.is_none() {
-            let mut window =
-                Window::new("StdDraw", self.width, self.height, WindowOptions::default())
-                    .unwrap_or_else(|e| {
-                        panic!("{}", e);
-                    });
-
-            // Limit to max ~60 fps update rate
-            window.limit_update_rate(Some(std::time::Duration::from_micros(16600)));
-            self.window = Some(ThreadSafeWindow(window));
+            buffer: vec![0; width * height],
         }
     }
 
@@ -92,49 +74,49 @@ impl GlobalState {
         (self.height as f64 / (self.ymax - self.ymin)) as f32
     }
 
-    fn update_window(&mut self) {
-        if self.defer_update {
-            return;
+    fn update_buffer(&mut self) {
+        // Resize buffer if needed
+        if self.buffer.len() != self.width * self.height {
+            self.buffer.resize(self.width * self.height, 0);
         }
-        self.init_window();
 
         // Convert pixmap to u32 buffer for minifb (ARGB -> 0RGB or similar)
         // tiny-skia uses Premultiplied RGBA8888. minifb expects 00RRGGBB.
-        // We need to convert.
-        let buffer: Vec<u32> = self
-            .pixmap
-            .pixels()
-            .iter()
-            .map(|p| {
-                let r = p.red();
-                let g = p.green();
-                let b = p.blue();
-                ((r as u32) << 16) | ((g as u32) << 8) | (b as u32)
-            })
-            .collect();
-
-        if let Some(wrapper) = &mut self.window {
-            wrapper
-                .0
-                .update_with_buffer(&buffer, self.width, self.height)
-                .unwrap();
+        let pixels = self.pixmap.pixels();
+        for (i, p) in pixels.iter().enumerate() {
+            let r = p.red();
+            let g = p.green();
+            let b = p.blue();
+            self.buffer[i] = ((r as u32) << 16) | ((g as u32) << 8) | (b as u32);
         }
     }
 }
 
-lazy_static! {
-    static ref STATE: Mutex<GlobalState> = Mutex::new(GlobalState::new());
+static STATE: LazyLock<Mutex<GlobalState>> = LazyLock::new(|| Mutex::new(GlobalState::new()));
+
+thread_local! {
+    static WINDOW: RefCell<Option<Window>> = RefCell::new(None);
+}
+
+// Helper to convert u32 RGB to Color
+fn u32_to_color(rgb: u32) -> Color {
+    let r = ((rgb >> 16) & 0xFF) as u8;
+    let g = ((rgb >> 8) & 0xFF) as u8;
+    let b = (rgb & 0xFF) as u8;
+    Color::from_rgba8(r, g, b, 255)
 }
 
 // --- Public API ---
 
-pub fn set_canvas_size(w: usize, h: usize) {
+pub fn set_canvas_size(w: usize, h: usize) -> Result<(), String> {
     let mut state = STATE.lock().unwrap();
     state.width = w;
     state.height = h;
-    state.pixmap = Pixmap::new(w as u32, h as u32).unwrap();
+    state.pixmap = Pixmap::new(w as u32, h as u32)
+        .ok_or_else(|| format!("Failed to create pixmap of size {}x{}", w, h))?;
     state.pixmap.fill(Color::WHITE);
-    state.window = None; // Force recreation
+    // Window will be recreated in show() if size mismatches
+    Ok(())
 }
 
 pub fn set_x_scale(min: f64, max: f64) {
@@ -151,10 +133,7 @@ pub fn set_y_scale(min: f64, max: f64) {
 
 pub fn set_pen_color(rgb: u32) {
     let mut state = STATE.lock().unwrap();
-    let r = ((rgb >> 16) & 0xFF) as u8;
-    let g = ((rgb >> 8) & 0xFF) as u8;
-    let b = (rgb & 0xFF) as u8;
-    state.pen_color = Color::from_rgba8(r, g, b, 255);
+    state.pen_color = u32_to_color(rgb);
 }
 
 pub fn set_pen_radius(r: f32) {
@@ -164,12 +143,9 @@ pub fn set_pen_radius(r: f32) {
 
 pub fn clear(rgb: u32) {
     let mut state = STATE.lock().unwrap();
-    let r = ((rgb >> 16) & 0xFF) as u8;
-    let g = ((rgb >> 8) & 0xFF) as u8;
-    let b = (rgb & 0xFF) as u8;
-    let color = Color::from_rgba8(r, g, b, 255);
+    let color = u32_to_color(rgb);
     state.pixmap.fill(color);
-    state.update_window();
+    // No update_window() here, wait for show()
 }
 
 pub fn line(x0: f64, y0: f64, x1: f64, y1: f64) {
@@ -183,24 +159,24 @@ pub fn line(x0: f64, y0: f64, x1: f64, y1: f64) {
     let mut pb = PathBuilder::new();
     pb.move_to(sx0, sy0);
     pb.line_to(sx1, sy1);
-    let path = pb.finish().unwrap();
+    let path = match pb.finish() {
+        Some(p) => p,
+        None => return, // Invalid path
+    };
 
     let mut paint = Paint::default();
     paint.set_color(state.pen_color);
     paint.anti_alias = true;
 
-    // Calculate stroke width based on pen radius and canvas size
-    // StdDraw defines pen radius as fraction of canvas size (usually width)
-    // But here we have independent scales. Let's approximate using width.
-    let stroke_width = state.pen_radius * state.width as f32 * 2.0; // *2 because radius vs diameter? StdDraw says "radius".
+    // Calculate stroke width based on pen radius and coordinate scale
+    let stroke_width = state.pen_radius * state.factor_x() * DIAMETER_SCALE;
 
     let mut stroke = Stroke::default();
-    stroke.width = stroke_width.max(1.0); // At least 1 pixel
+    stroke.width = stroke_width.max(1.0);
 
     state
         .pixmap
         .stroke_path(&path, &paint, &stroke, Transform::identity(), None);
-    state.update_window();
 }
 
 pub fn point(x: f64, y: f64) {
@@ -208,6 +184,8 @@ pub fn point(x: f64, y: f64) {
     let sx = state.scale_x(x);
     let sy = state.scale_y(y);
 
+    // StdDraw's pen radius is a fraction of the canvas width.
+    // A point is drawn as a filled circle of radius `pen_radius * canvas_width`.
     let radius = state.pen_radius * state.width as f32;
     let radius = radius.max(1.0);
 
@@ -215,7 +193,11 @@ pub fn point(x: f64, y: f64) {
     paint.set_color(state.pen_color);
     paint.anti_alias = true;
 
-    let path = PathBuilder::from_circle(sx, sy, radius).unwrap();
+    let path = match PathBuilder::from_circle(sx, sy, radius) {
+        Some(p) => p,
+        None => return,
+    };
+
     state.pixmap.fill_path(
         &path,
         &paint,
@@ -223,30 +205,32 @@ pub fn point(x: f64, y: f64) {
         Transform::identity(),
         None,
     );
-    state.update_window();
 }
 
 pub fn circle(x: f64, y: f64, r: f64) {
     let mut state = STATE.lock().unwrap();
     let sx = state.scale_x(x);
     let sy = state.scale_y(y);
-    // Assuming uniform scaling for circle radius, or taking X scale
+    // Circle radius r is in user coordinates
     let sr = r as f32 * state.factor_x();
 
-    let path = PathBuilder::from_circle(sx, sy, sr).unwrap();
+    let path = match PathBuilder::from_circle(sx, sy, sr) {
+        Some(p) => p,
+        None => return,
+    };
 
     let mut paint = Paint::default();
     paint.set_color(state.pen_color);
     paint.anti_alias = true;
 
-    let stroke_width = state.pen_radius * state.width as f32 * 2.0;
+    // Stroke width for circle outline is based on pen radius (fraction of canvas)
+    let stroke_width = state.pen_radius * state.width as f32 * DIAMETER_SCALE;
     let mut stroke = Stroke::default();
     stroke.width = stroke_width.max(1.0);
 
     state
         .pixmap
         .stroke_path(&path, &paint, &stroke, Transform::identity(), None);
-    state.update_window();
 }
 
 pub fn filled_circle(x: f64, y: f64, r: f64) {
@@ -255,7 +239,10 @@ pub fn filled_circle(x: f64, y: f64, r: f64) {
     let sy = state.scale_y(y);
     let sr = r as f32 * state.factor_x();
 
-    let path = PathBuilder::from_circle(sx, sy, sr).unwrap();
+    let path = match PathBuilder::from_circle(sx, sy, sr) {
+        Some(p) => p,
+        None => return,
+    };
 
     let mut paint = Paint::default();
     paint.set_color(state.pen_color);
@@ -268,7 +255,6 @@ pub fn filled_circle(x: f64, y: f64, r: f64) {
         Transform::identity(),
         None,
     );
-    state.update_window();
 }
 
 pub fn rectangle(x: f64, y: f64, half_width: f64, half_height: f64) {
@@ -278,21 +264,23 @@ pub fn rectangle(x: f64, y: f64, half_width: f64, half_height: f64) {
     let w = (half_width * 2.0) as f32 * state.factor_x();
     let h = (half_height * 2.0) as f32 * state.factor_y();
 
-    let rect = tiny_skia::Rect::from_xywh(sx, sy, w, h).unwrap();
+    let rect = match tiny_skia::Rect::from_xywh(sx, sy, w, h) {
+        Some(r) => r,
+        None => return,
+    };
     let path = PathBuilder::from_rect(rect);
 
     let mut paint = Paint::default();
     paint.set_color(state.pen_color);
     paint.anti_alias = true;
 
-    let stroke_width = state.pen_radius * state.width as f32 * 2.0;
+    let stroke_width = state.pen_radius * state.width as f32 * DIAMETER_SCALE;
     let mut stroke = Stroke::default();
     stroke.width = stroke_width.max(1.0);
 
     state
         .pixmap
         .stroke_path(&path, &paint, &stroke, Transform::identity(), None);
-    state.update_window();
 }
 
 pub fn filled_rectangle(x: f64, y: f64, half_width: f64, half_height: f64) {
@@ -302,7 +290,10 @@ pub fn filled_rectangle(x: f64, y: f64, half_width: f64, half_height: f64) {
     let w = (half_width * 2.0) as f32 * state.factor_x();
     let h = (half_height * 2.0) as f32 * state.factor_y();
 
-    let rect = tiny_skia::Rect::from_xywh(sx, sy, w, h).unwrap();
+    let rect = match tiny_skia::Rect::from_xywh(sx, sy, w, h) {
+        Some(r) => r,
+        None => return,
+    };
     let path = PathBuilder::from_rect(rect);
 
     let mut paint = Paint::default();
@@ -316,7 +307,6 @@ pub fn filled_rectangle(x: f64, y: f64, half_width: f64, half_height: f64) {
         Transform::identity(),
         None,
     );
-    state.update_window();
 }
 
 pub fn text(_x: f64, _y: f64, _s: &str) {
@@ -329,19 +319,68 @@ pub fn text(_x: f64, _y: f64, _s: &str) {
 pub fn show(timeout_ms: u64) {
     let mut state = STATE.lock().unwrap();
     state.defer_update = false; // Enable updates
-    state.update_window();
 
-    // Handle window events (like close)
-    if let Some(wrapper) = &mut state.window {
-        if !wrapper.0.is_open() && !wrapper.0.is_key_down(Key::Escape) {
-            // Window closed
+    // Update buffer from pixmap
+    state.update_buffer();
+    let width = state.width;
+    let height = state.height;
+    let buffer = state.buffer.clone(); // Clone buffer to release lock before window update?
+                                       // No, we can hold lock, but window update might be slow.
+                                       // But we need to release lock if we want other threads to draw?
+                                       // Actually, minifb update is fast enough usually.
+                                       // But `show` also sleeps. We MUST release lock before sleeping.
+
+    drop(state); // Release lock before window ops and sleep
+
+    WINDOW.with(|cell| {
+        let mut win_opt = cell.borrow_mut();
+
+        // Check if window needs creation or resizing
+        let needs_recreate = if let Some(win) = win_opt.as_ref() {
+            let (w, h) = win.get_size();
+            w != width || h != height
+        } else {
+            true
+        };
+
+        if needs_recreate {
+            let mut window = Window::new("StdDraw", width, height, WindowOptions::default())
+                .unwrap_or_else(|e| {
+                    panic!("Failed to create window: {}", e);
+                });
+            // Limit to max ~60 fps update rate
+            window.limit_update_rate(Some(std::time::Duration::from_micros(16600)));
+            *win_opt = Some(window);
         }
-        // minifb update is called in update_window
-    }
+
+        if let Some(win) = win_opt.as_mut() {
+            win.update_with_buffer(&buffer, width, height).unwrap();
+        }
+    });
 
     if timeout_ms > 0 {
         std::thread::sleep(std::time::Duration::from_millis(timeout_ms));
     }
+}
+
+pub fn is_open() -> bool {
+    WINDOW.with(|cell| {
+        if let Some(win) = cell.borrow().as_ref() {
+            win.is_open()
+        } else {
+            false
+        }
+    })
+}
+
+pub fn is_key_down(key: Key) -> bool {
+    WINDOW.with(|cell| {
+        if let Some(win) = cell.borrow().as_ref() {
+            win.is_key_down(key)
+        } else {
+            false
+        }
+    })
 }
 
 pub fn enable_double_buffering() {
@@ -352,5 +391,9 @@ pub fn enable_double_buffering() {
 pub fn disable_double_buffering() {
     let mut state = STATE.lock().unwrap();
     state.defer_update = false;
-    state.update_window();
+    // We should trigger an update, but we can't call show() here easily without timeout.
+    // And we can't access window if we are not on main thread.
+    // So we just set the flag. The next show() will update.
+    // Or we could force an update if we are on main thread?
+    // For now, just set flag.
 }

@@ -14,3 +14,9 @@ algs4-fundamentals = { version = "0.1.0", path = "../fundamentals" }
 algs4-searching = { version = "0.1.0", path = "../searching" }
 
 [dev-dependencies]
+criterion = "0.5"
+rand = "0.8"
+
+[[bench]]
+name = "strings_benchmarks"
+harness = false

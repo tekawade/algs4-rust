@@ -12,18 +12,18 @@
 //! **Reference:** <https://algs4.cs.princeton.edu/13stacks>
 
 // Linked implementations
-mod linked_bag;
-mod linked_queue;
-mod linked_stack;
+pub mod linked_bag;
+pub mod linked_queue;
+pub mod linked_stack;
 
 pub use linked_bag::LinkedBag;
 pub use linked_queue::LinkedQueue;
 pub use linked_stack::LinkedStack;
 
 // Array implementations
-mod resizing_array_bag;
-mod resizing_array_queue;
-mod resizing_array_stack;
+pub mod resizing_array_bag;
+pub mod resizing_array_queue;
+pub mod resizing_array_stack;
 
 pub use resizing_array_bag::ResizingArrayBag;
 pub use resizing_array_queue::ResizingArrayQueue;

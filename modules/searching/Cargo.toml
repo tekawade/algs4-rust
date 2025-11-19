@@ -13,3 +13,9 @@ description = "Searching algorithms and symbol tables from Algorithms 4th Editio
 algs4-fundamentals = { version = "0.1.0", path = "../fundamentals" }
 
 [dev-dependencies]
+criterion = "0.5"
+rand = "0.8"
+
+[[bench]]
+name = "searching_benchmarks"
+harness = false

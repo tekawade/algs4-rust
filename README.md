@@ -517,20 +517,29 @@ cargo test --doc
 ```
 
 ### Benchmarking
-
-```bash
-# Run graph benchmarks
-cargo bench -p algs4-graphs
-
-# Benchmarks include:
-# - Graph creation
-# - DFS/BFS traversal
-# - Connected components
-# - Dijkstra shortest paths
-# - Minimum spanning trees
-# - Topological sort
-# - Strongly connected components
-```
+ 
+ ```bash
+ # Run benchmarks for specific module
+ cargo bench -p algs4-fundamentals
+ cargo bench -p algs4-sorting
+ cargo bench -p algs4-searching
+ cargo bench -p algs4-graphs
+ cargo bench -p algs4-strings
+ cargo bench -p algs4-geometry
+ cargo bench -p algs4-advanced
+ 
+ # Run all benchmarks (may take a while)
+ cargo bench --workspace
+ 
+ # Benchmarks include:
+ # - Fundamentals: Bags, Queues, Stacks, Union-Find
+ # - Sorting: All major sorting algorithms (Elementary, Merge, Quick, Heap, String Sorts)
+ # - Searching: BST, Red-Black BST, Hash Tables, Tries
+ # - Graphs: Traversal, Shortest Paths, MST, etc.
+ # - Strings: Pattern Matching (KMP), Tries
+ # - Geometry: Convex Hull
+ # - Advanced: Fenwick Tree, B-Tree
+ ```
 
 ### Documentation
 

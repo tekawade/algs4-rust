@@ -39,9 +39,9 @@
 //!
 //! **Reference:** <https://algs4.cs.princeton.edu/15uf>
 
-mod quick_find_uf;
-mod quick_union_uf;
-mod weighted_quick_union_uf;
+pub mod quick_find_uf;
+pub mod quick_union_uf;
+pub mod weighted_quick_union_uf;
 
 pub use quick_find_uf::QuickFindUF;
 pub use quick_union_uf::QuickUnionUF;

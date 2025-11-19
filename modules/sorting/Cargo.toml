@@ -13,3 +13,9 @@ description = "Sorting algorithms from Algorithms 4th Edition"
 algs4-fundamentals = { version = "0.1.0", path = "../fundamentals" }
 
 [dev-dependencies]
+criterion = "0.5"
+rand = "0.8"
+
+[[bench]]
+name = "sorting_benchmarks"
+harness = false

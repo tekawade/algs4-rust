@@ -1,0 +1,22 @@
+# CODEOWNERS file for algs4-rust repository
+# This file defines who is responsible for code in this repository
+# and who needs to approve pull requests.
+
+# Default owner for everything in the repository
+* @tekawade
+
+# Specific ownership for key files
+/Cargo.toml @tekawade
+/LICENSE @tekawade
+/README.md @tekawade
+/.github/ @tekawade
+
+# Module ownership - require approval for changes to core modules
+/modules/fundamentals/ @tekawade
+/modules/sorting/ @tekawade
+/modules/searching/ @tekawade
+/modules/graphs/ @tekawade
+/modules/strings/ @tekawade
+/modules/geometry/ @tekawade
+/modules/advanced/ @tekawade
+/modules/plotting/ @tekawade

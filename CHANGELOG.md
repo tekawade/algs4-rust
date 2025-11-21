@@ -88,7 +88,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Code Quality**: All code passes `cargo clippy -- -D warnings`
 - **Formatting**: All code formatted with `rustfmt`
 - **Documentation**: Complete API documentation with examples and doctests
-- **Total Tests**: 1,500+ passing tests across all modules
+- **Total Tests**: 1,377 passing tests across all modules
 - **License**: GPL-3.0 (inherited from original algs4 project)
 - **Repository**: Structured as Cargo workspace with 8 modules
 

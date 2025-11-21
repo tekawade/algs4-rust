@@ -31,7 +31,7 @@ Navigate to: `Settings` → `Branches` → `Branch protection rules` → Add rul
 #### Other Protection Rules
 - [x] **Require conversation resolution before merging** - All PR comments must be resolved
 - [x] **Require signed commits** (optional but recommended for security)
-- [x] **Require linear history** (optional, prevents merge commits)
+- [x] **Require linear history** (optional, requires squash or rebase merging instead of merge commits)
 - [x] **Include administrators** - Apply these rules to repository admins too
 - [ ] **Allow force pushes** - DISABLED (prevents history rewriting)
 - [ ] **Allow deletions** - DISABLED (prevents branch deletion)

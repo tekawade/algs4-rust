@@ -78,7 +78,8 @@ The `.github/CODEOWNERS` file has been created with `@tekawade` as the default o
   - Go to `Settings` → `Security & analysis` → Enable "Secret scanning"
 
 - **Require 2FA**: Require two-factor authentication for all contributors
-  - Go to `Settings` → `Options` → Enable "Require two-factor authentication"
+  - For organization repositories: Go to your **organization** on GitHub → **Settings** → **Authentication security** → Enable "Require two-factor authentication"
+  - For personal repositories: Go to your **GitHub account** → **Settings** → **Password and authentication** → Enable two-factor authentication
 
 ### 7. Testing the Configuration
 
